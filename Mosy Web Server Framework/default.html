@@ -1,0 +1,273 @@
+<!DOCTYPE html5>
+<head>
+        <charset=utf-8 />
+        <link rel="stylesheet" href="./bootstrap/css/bootstrap.css" />
+        <link rel="stylesheet" href="./localjs/AudioCSS.css" />
+        <script src="./bootstrap/js/jquery.min.js"></script>
+        <script src="./bootstrap/js/popper.min.js"></script>
+        <script src="./bootstrap/js/bootstrap.min.js"></script>
+        <script src="./localjs/AudioControllerLayout.js"></script>
+</head><!--background-image:url('./res/img/bg1.png');background-size:960px 540px;-->
+<body style="overflow:hidden;background-color:#0f0f0f;color:#ffffff;width:960px;height:540px;border-style:solid;border-color:#B62022;border-width:3px" onselectstart="return false">
+    <div id="TitleBar" style="background-color:rgba(15,15,15,0.6);max-height:44px;width:954px;position:absolute;z-index:7777;border-bottom-style:solid;border-bottom-color:#C92022;border-bottom-width:1px;color:#C92022;margin-top:1px;margin-left:0px;" class="row">
+        <div class="col-md-10">
+            <h1 style="font-size:32px;overflow:hidden" id="DialogTitle" onmousedown="window.LBtnDown()" onmouseup="window.LBtnUp()">Audio Controller</h1>
+        </div>
+        <div class="col-md-1" style="padding-right:5px;padding-top:0px;padding-left:110px">
+            <img style="float:right;height:44px;margin-top:0px;margin-right:-4px;width:50px" src="./bootstrap-icons/pip.svg" OnMouseOver="this.src='./bootstrap-icons/pip-fill.svg'" OnMouseOut="this.src='./bootstrap-icons/pip.svg'" onclick="Minimsize()" />
+        </div>
+        <div class="col-md-1" style="padding-right:0px;padding-top:0px;padding-left:15px;max-width:44px">
+            <img style="float:right;height:44px;margin-top:0px;margin-right:-4px;width:50px" src="./bootstrap-icons/x-square.svg" OnMouseOver="this.src='./bootstrap-icons/x-square-fill.svg'" OnMouseOut="this.src='./bootstrap-icons/x-square.svg'" onclick="Close()" />
+        </div>
+    </div>
+    <div style="position:absolute;height:534px;width:954px">
+        <div id="ListDiv" class="HideScroll" style="overflow:auto;background-color:rgba(0,0,0,1);width:240px;position:absolute;z-index:2;height:534px;border-right-style:solid;border-right-color:#C92022;border-right-width:1px;">
+            <div style="width:240px;height:34px;position:sticky;top:0;background-color:rgba(15,15,15,0.3);border-bottom:2px solid #B62022;z-index:77;color:#C92022;font-size:20px">
+                PlayList
+                <img style="float:right;height:30px;margin-top:0px;margin-right:3px;" src="./bootstrap-icons/x-square.svg" OnMouseOver="this.src='./bootstrap-icons/x-square-fill.svg'" OnMouseOut="this.src='./bootstrap-icons/x-square.svg'" OnClick="RemoveList()" />
+                <img style="float:right;height:30px;margin-top:0px;margin-right:3px;" src="./bootstrap-icons/plus-square.svg" OnMouseOver="this.src='./bootstrap-icons/plus-square-fill.svg'" OnMouseOut="this.src='./bootstrap-icons/plus-square.svg'" OnClick="SelectFiles()" />
+            </div>
+            <div>
+                <ul id="PlayList" class="nav nav-pills nav-stacked navbar-nav HideScroll" style="padding-left:0px;"></ul>
+            </div>
+        </div>
+        <div id="ControlPanel" class="HideScroll" style="float:right;background-color:rgba(0,0,0,0.3);width:240px;position:absolute;z-index:2;height:534px;border-left-style:solid;border-left-color:#C92022;border-left-width:1px;margin-right:0px;margin-left:714px;overflow:auto">
+            <ul id="ControlList" style="width:257px;list-style: none;padding-left:0px;">
+                <li>
+                    <div style="width:240px;height:40px">
+                        <p style="width:100px;margin-right:0px;display:inline">
+                            Rate:
+                        </p>
+                        <div style="display:inline;width:160px;float:right">
+                            <input id="Rate" class="ne-range" style="width:125px;margin-right:5px" type="range" min="90" max="110" step="1" value="100" />
+                            <p id="RateV" style="float:right;width:30px;">
+                                0
+                            </p>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div style="width:240px;height:40px">
+                        <p style="width:100px;margin-right:0px;display:inline">
+                            Pitch:
+                        </p>
+                        <div style="display:inline;width:160px;float:right">
+                            <input id="Speed" class="ne-range" style="width:125px;margin-right:5px" type="range" min="90" max="110" step="1" value="100" />
+                            <p id="SpeedV" style="float:right;width:30px;">
+                                0
+                            </p>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div style="width:240px;height:40px">
+                        <p style="width:100px;margin-right:0px;display:inline">
+                            Tempo:
+                        </p>
+                        <div style="display:inline;width:160px;float:right">
+                            <input id="Tempo" class="ne-range" style="width:125px;margin-right:5px" type="range" min="90" max="110" step="1" value="100" />
+                            <p id="TempoV" style="float:right;width:30px;">
+                                0
+                            </p>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <button class="btn btn-kali" id="ResetTempo" style="margin-left:5px">Reset</button>
+                </li>
+                <li>
+                    <div style="width:240px;margin-top:3px;border-top:1px solid #C92022">
+                        <p>Volumes</p>
+                    </div>
+                </li>
+                <li>
+                    <div style="width:240px;height:40px">
+                        <p style="width:100px;margin-right:0px;display:inline">
+                            Left:
+                        </p>
+                        <div style="display:inline;width:160px;float:right">
+                            <input id="LeftVolume" class="ne-range" style="width:125px;margin-right:5px;background-size:100% 100%" type="range" min="0" max="100" step="1" value="100" />
+                            <p id="LeftVolumeV" style="float:right;width:30px;">
+                                100
+                            </p>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div style="width:240px;height:40px">
+                        <p style="width:100px;margin-right:0px;display:inline">
+                            Right:
+                        </p>
+                        <div style="display:inline;width:160px;float:right">
+                            <input id="RightVolume" class="ne-range" style="width:125px;margin-right:5px;background-size:100% 100%" type="range" min="0" max="100" step="1" value="100" />
+                            <p id="RightVolumeV" style="float:right;width:30px;">
+                                100
+                            </p>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div style="width:240px;height:40px">
+                        <p style="width:100px;margin-right:0px;display:inline">
+                            Global:
+                        </p>
+                        <div style="display:inline;width:160px;float:right">
+                            <input id="GlobalVolume" class="ne-range" style="width:125px;margin-right:5px;background-size:100% 100%" type="range" min="0" max="100" step="1" value="100" />
+                            <p id="GlobalVolumeV" style="float:right;width:30px;">
+                                100
+                            </p>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div style="width:240px;border-top:1px solid #C92022">
+                        <p>Echo Settings</p>
+                    </div>
+                </li>
+                <li>
+                    <div style="width:240px;">
+                        <p>Echo Time</p>
+                    </div>
+                </li>
+                <li>
+                    <div style="width:240px;height:40px">
+                        <p style="width:100px;margin-right:0px;display:inline">
+                            Left:
+                        </p>
+                        <div style="display:inline;width:160px;float:right">
+                            <input id="LeftTime" class="ne-range" style="width:125px;margin-right:5px;background-size:0% 100%" type="range" min="0" max="100" step="10" value="0" />
+                            <p id="LeftTimeV" style="float:right;width:30px;">
+                                0
+                            </p>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div style="width:240px;height:40px">
+                        <p style="width:100px;margin-right:0px;display:inline">
+                            Right:
+                        </p>
+                        <div style="display:inline;width:160px;float:right">
+                            <input id="RightTime" class="ne-range" style="width:125px;margin-right:5px;background-size:0% 100%" type="range" min="0" max="100" step="10" value="0" />
+                            <p id="RightTimeV" style="float:right;width:30px;">
+                                0
+                            </p>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div style="width:240px;">
+                        <p>Echo Volumes</p>
+                    </div>
+                </li>
+                <li>
+                    <div style="width:240px;height:40px">
+                        <p style="width:100px;margin-right:0px;display:inline">
+                            Left:
+                        </p>
+                        <div style="display:inline;width:160px;float:right">
+                            <input id="LeftEchoVolume" class="ne-range" style="width:125px;margin-right:5px;background-size:0% 100%" type="range" min="0" max="100" step="1" value="0" />
+                            <p id="LeftEchoVolumeV" style="float:right;width:30px;">
+                                0
+                            </p>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div style="width:240px;height:40px">
+                        <p style="width:100px;margin-right:0px;display:inline">
+                            Right:
+                        </p>
+                        <div style="display:inline;width:160px;float:right">
+                            <input id="RightEchoVolume" class="ne-range" style="width:125px;margin-right:5px;background-size:0% 100%" type="range" min="0" max="100" step="1" value="0" />
+                            <p id="RightEchoVolumeV" style="float:right;width:30px;">
+                                0
+                            </p>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <button class="btn btn-kali" id="ResetEcho" style="margin-left:5px">Reset</button>
+                </li>
+            </ul>
+        </div>
+        <div id="MainPanel" style="height:534px;width:954px">
+            <div>
+                <div id="RectLeft" style="height:534px;width:240px;float:left;padding-left:0px;position:absolute;z-index:0">
+                    <ul id="LeftRect" style="list-style: none;padding-left:0px;width:240px;margin-left:0px;">
+                    </ul>
+                </div>
+                <div id="LyircOverlay" class="HideScroll" style="height:534px;width:954px;position: absolute;z-index:1;padding-left:0px;overflow-y:auto">
+                    <ul id="LyircUl" style="height:534px;width:954px;list-style: none;padding-left:0px;">
+                        <li class="LyircNormal"></li>
+                        <li class="LyircNormal"></li>
+                        <li class="LyircNormal"></li>
+                        <li class="LyircNormal"></li>
+                        <li class="LyircNormal"></li>
+                        <li class="LyircNormal"></li>
+                        <li class="LyircNormal"></li>
+                        <li class="LyircNormal"></li>
+                        <li class="LyircNormal"></li>
+                        <li class="LyircNormal"></li>
+                        <li class="LyircNormal Forced">Drop Files Here to Open</li>
+                    </ul>
+                </div>
+                <div id="RectRight" style="height:534px;float:right;width:240px;padding-right:0px;position:absolute;z-index:0;margin-left:716px">
+                    <ul id="RightRect" style="float:right;list-style: none;width:240px;padding-right:0px;margin-right:0px;text-align:right;">
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="width:954px;background-color:rgba(0,0,0,0.7);position: absolute;z-index:3;max-height:104px;margin-left:0px;margin-right:0px;border-top-style:solid;border-top-color:#C92022;border-top-width:1px;margin-top:430px;" id="MusicPanel">
+        <div style="height:30px;width:936px;color:#C92022">
+            <p style="font-size:20px;text-align:left;margin-left:15px" id="MusicTitle">Title</p>
+        </div>
+        <div style="height:74px;width:936px;">
+            <div class="row" style="margin-left:5px;margin-right:5px;height:20px">
+                <div class="col-md-1">
+                    <p id="CurrentTime" style="font-size:15px;text-align:center">00:00:00</p>
+                </div>
+                <div class="col-md-10">
+                    <input id="Slider" class="ne-range" type="range" min="0" max="500" step="1" value="0" style="background-size:0% 100%" />
+                </div>
+                <div class="col-md-1">
+                    <p id="FullTime" style="font-size:15px;text-align:center">00:00:00</p>
+                </div>
+            </div>
+            <div class="row" style="height:54px">
+                <div class="col-md-1" style="float:right;margin-left:20px;margin-top:10px;padding-right:0px;width:40px;margin-right:-40px">
+                    <img style="height:40px;margin-bottom:2px" id="PlayBtn" src="./bootstrap-icons/play.svg" />
+                </div>
+                <div class="col-md-1" style="margin-left:4px;margin-top:20px;padding-right:0px;width:30px;flex:none">
+                    <img style="height:30px;margin-bottom:2px" id="LastBtn" src="./bootstrap-icons/skip-start.svg" OnMouseOver="this.src='./bootstrap-icons/skip-start-fill.svg'" OnMouseOut="this.src='./bootstrap-icons/skip-start.svg'" onclick="PlayLast();" />
+                </div>
+                <div class="col-md-1" style="margin-left:4px;margin-top:20px;padding-right:0px;width:30px;flex:none">
+                    <img style="height:30px;margin-bottom:2px" id="NextBtn" src="./bootstrap-icons/skip-end.svg" OnMouseOver="this.src='./bootstrap-icons/skip-end-fill.svg'" OnMouseOut="this.src='./bootstrap-icons/skip-end.svg'" onclick="PlayNext();" />
+                </div>
+                <div class="col-md-2" style="padding-left:40px;padding-right:0px;width:170px;margin-top:20px;flex:none">
+                    <input id="Value" class="ne-range" type="range" min="0" max="100" step="1" value="100" />
+                </div>
+                <div class="col-md-7" style="padding-left:4px;padding-right:0px;width:30px;flex:none">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="ModalDlg" style="position: absolute;top:150px;left:250px;border-radius:30%">
+        <div class="modal-dialog" style="background-color:#0f0f0f;border:2px solid #B62022">
+            <div class="modal-content" style="background-color:#0f0f0f">
+                <div class="modal-header" style="border-bottom-style:none;background-color:#0f0f0f">
+                    <h3 id="DlgTitle" class="modal-title" style="color:#C92022">
+                        Search Result
+                    </h3>
+                </div>
+                <div class="modal-body" style="color:#ffffff;background-color:#0f0f0f">
+                    <p id="DlgText"></p>
+                </div>
+                <div class="modal-footer" style="border-top-style:none;background-color:#0f0f0f">
+                    <button type="button" class="btn btn-outline-secondary" data-dismiss="modal" style="background-color:#0f0f0f;color:#C92022;border-color:#C92022">OK</button>
+                </div>
+            </div>
+        </div>top:20px;left:30px;width:900px;height:500px;
+    </div>
+</body>
