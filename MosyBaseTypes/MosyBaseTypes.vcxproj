@@ -163,7 +163,10 @@
     <ClInclude Include="MosyObject.h" />
     <ClInclude Include="MosyPointer.h" />
     <ClInclude Include="MosyRequestPackage.h" />
+    <ClInclude Include="MosyRequestQueuePackage.h" />
     <ClInclude Include="MosyResponsePackage.h" />
+    <ClInclude Include="MosyResponseQueuePackage.h" />
+    <ClInclude Include="MosySocket.h" />
     <ClInclude Include="MosyString.h" />
     <ClInclude Include="MosyValue.h" />
     <ClInclude Include="pch.h" />
@@ -178,7 +181,9 @@
     <ClCompile Include="MosyObject.cpp" />
     <ClCompile Include="MosyPointer.cpp" />
     <ClCompile Include="MosyRequestPackage.cpp" />
+    <ClCompile Include="MosyRequestQueuePackage.cpp" />
     <ClCompile Include="MosyResponsePackage.cpp" />
+    <ClCompile Include="MosyResponseQueuePackage.cpp" />
     <ClCompile Include="MosyString.cpp" />
     <ClCompile Include="MosyValue.cpp" />
     <ClCompile Include="pch.cpp">

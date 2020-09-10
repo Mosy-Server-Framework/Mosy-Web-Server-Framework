@@ -156,7 +156,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
+    <ClInclude Include="MosyMap.h" />
+    <ClInclude Include="MosyObject.h" />
     <ClInclude Include="MosyRegistryManager.h" />
+    <ClInclude Include="MosyString.h" />
+    <ClInclude Include="MosyValue.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
