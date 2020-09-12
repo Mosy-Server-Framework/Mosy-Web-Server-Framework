@@ -156,6 +156,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
+    <ClInclude Include="MosyMonitorThreadStruct.h" />
+    <ClInclude Include="MosyThreadManager.h" />
+    <ClInclude Include="MosyThreadMonitor.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
