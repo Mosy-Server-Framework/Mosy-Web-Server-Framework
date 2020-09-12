@@ -4,10 +4,9 @@
 #include "MosyString.h"
 #include <map>
 #include <string>
-#include "MosyProFileManager.h"
 using namespace std;
 
-class _declspec(dllexport) MosyRegistryManager
+class _declspec(dllimport) MosyRegistryManager
 {
 protected:
 	map<wstring, map<MosyValue, MosyValue>>Registry;

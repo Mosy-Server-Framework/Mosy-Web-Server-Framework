@@ -10,6 +10,13 @@ MosyValue::MosyValue(std::wstring s)
 {
 	Value = s;
 }
+MosyValue::MosyValue(double s)
+{
+	wchar_t str[1000];
+	wsprintfW(str, L"%lf", s);
+	Value = str;
+}
+
 int MosyValue::GetInteger()
 {
 	return atoi(MosyString::WString2String(Value).c_str());
@@ -27,7 +34,7 @@ std::wstring MosyValue::GetString()
 
 bool MosyValue::GetBoolean()
 {
-	if (Value == L"true")
+	if (GetInteger() != 0)
 	{
 		return true;
 	}

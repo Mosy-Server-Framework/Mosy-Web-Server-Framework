@@ -156,16 +156,64 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
+    <ClInclude Include="MosyLogger.h" />
+    <ClInclude Include="MosyObject.h" />
+    <ClInclude Include="MosyRegistryManager.h" />
+    <ClInclude Include="MosyServerApplication.h" />
+    <ClInclude Include="MosyString.h" />
+    <ClInclude Include="MosyValue.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="MosyServerApplication.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MosyBaseTypes\MosyBaseTypes.vcxproj">
+      <Project>{2ddffa73-3847-4a8a-ad0e-93d335752f9d}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\MosyCoreThread\MosyCoreThread.vcxproj">
+      <Project>{0caa4e55-5477-441f-b2c0-512ce9a4c717}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\MosyDataSerializer\MosyDataSerializer.vcxproj">
+      <Project>{1a17aaf8-5cf5-4482-afdc-c7a47cf9cb02}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\MosyLogger\MosyLogger.vcxproj">
+      <Project>{00ac726e-54b1-4795-9698-c18963456df2}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\MosyModuleManager\MosyModuleManager.vcxproj">
+      <Project>{613c4e22-39bd-4897-b127-b31f3b8b8623}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\MosyQueueManager\MosyQueueManager.vcxproj">
+      <Project>{97b0784b-c10b-4905-8be8-6811079f72db}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\MosyRegistryManager\MosyRegistryManager.vcxproj">
+      <Project>{e13c5fdf-be95-4af1-b492-9bf46461e766}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\MosyRequestPatcher\MosyRequestPatcher.vcxproj">
+      <Project>{2b35dd48-0a14-4eb6-8836-14249c5d6100}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\MosyResponseBuilder\MosyResponseBuilder.vcxproj">
+      <Project>{625c2bbc-9107-4586-bbab-9ddbac816d37}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\MosyResponseSub-Thread\MosyResponseSub-Thread.vcxproj">
+      <Project>{5112a248-37ee-42c7-8242-e253cd8fe51a}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\MosyThreadManager\MosyThreadManager.vcxproj">
+      <Project>{a219e6c6-39e2-4163-ba57-fb81e6e6139d}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\MosyThreadMonitor\MosyThreadMonitor.vcxproj">
+      <Project>{ac1c731a-4767-4015-adb8-e5b7541c6b0d}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Win32SocketLib\Win32SocketLib.vcxproj">
+      <Project>{c6549537-33e7-47de-96a3-00a4b353e19d}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

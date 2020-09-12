@@ -21,22 +21,7 @@
     <ClInclude Include="pch.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="MosyCoreThread.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="MosyServerSocket.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="MosySocket.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="MosyRequestDeserializer.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="MosyRequestPackage.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="MosyObject.h">
+    <ClInclude Include="MosyLogger.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="MosyString.h">
@@ -45,25 +30,7 @@
     <ClInclude Include="MosyValue.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="MosyArray.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="MosyDataPackage.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="MosyDataSerializer.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="MosyHtmlPackage.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="MosyHtmlSerializer.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="MosyMap.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="MosyRegistryManager.h">
+    <ClInclude Include="MosyObject.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -72,6 +39,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="pch.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="MosyLogger.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

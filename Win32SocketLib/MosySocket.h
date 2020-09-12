@@ -12,7 +12,7 @@
 class _declspec(dllexport)
 	MosySocket
 #else
-class _declspec(dllimport)
+class _declspec(dllexport)
 	MosySocket
 #endif
 {

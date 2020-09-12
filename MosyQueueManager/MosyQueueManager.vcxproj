@@ -169,6 +169,11 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MosyBaseTypes\MosyBaseTypes.vcxproj">
+      <Project>{2ddffa73-3847-4a8a-ad0e-93d335752f9d}</Project>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

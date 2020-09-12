@@ -17,6 +17,7 @@ protected:
 public:
 	MosyValue();
 	MosyValue(std::wstring s);
+	MosyValue(double s);
 	int GetInteger();
 	double GetDouble();
 	std::wstring GetString();
