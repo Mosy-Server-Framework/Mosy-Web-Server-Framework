@@ -2,12 +2,13 @@
 #include "pch.h"
 #include "MosyMonitorThreadStruct.h"
 #include "MosyThreadManager.h"
+#include "MosyGobalManager.h"
 
-DWORD _stdcall _declspec(dllexport) MonitorThread(LPVOID LParam)
+DWORD _stdcall MonitorThread(LPVOID LParam)
 {
 	MosyMonitorStruct* MonitorStruct = (MosyMonitorStruct*)LParam;
 	HANDLE TargetThread = MonitorStruct->ThreadHandle;
-	WaitForSingleObject(TargetThread, INFINITE);
-	MonitorStruct->Manager->Remove(TargetThread);
+	WaitForSingleObject(TargetThread, MosyGobalManager::RegistryManager.Query(MosyValue(L"ThreadResponseTimeout")).GetInteger());
+	MosyGobalManager::ThreadManager.Remove(TargetThread);
 	return 0;
 }

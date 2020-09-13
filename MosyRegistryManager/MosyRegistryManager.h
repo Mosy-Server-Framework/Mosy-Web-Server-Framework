@@ -6,13 +6,15 @@
 #include <string>
 #include "MosyProFileManager.h"
 using namespace std;
+typedef  map<wstring, MosyValue> MosyRegistry;
+typedef  pair<wstring, MosyValue> MosyRegistryPair;
 
 class _declspec(dllexport) MosyRegistryManager
 {
 protected:
-	map<wstring, map<MosyValue, MosyValue>>Registry;
+	MosyRegistry Registry;
 public:
-	MosyValue Query(MosyValue MosyRegistry, MosyValue Key);
+	MosyValue Query(MosyValue Key);
 	void UpDate();
 	MosyRegistryManager();
 	~MosyRegistryManager();

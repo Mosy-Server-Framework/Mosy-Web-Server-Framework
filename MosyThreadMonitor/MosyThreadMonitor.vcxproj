@@ -100,6 +100,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
+      <ModuleDefinitionFile>Exports.def</ModuleDefinitionFile>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -116,6 +117,7 @@
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
+      <ModuleDefinitionFile>Exports.def</ModuleDefinitionFile>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -132,6 +134,7 @@
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
+      <ModuleDefinitionFile>Exports.def</ModuleDefinitionFile>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -152,13 +155,20 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
+      <ModuleDefinitionFile>Exports.def</ModuleDefinitionFile>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
+    <ClInclude Include="MosyGobalManager.h" />
+    <ClInclude Include="MosyMap.h" />
     <ClInclude Include="MosyMonitorThreadStruct.h" />
+    <ClInclude Include="MosyObject.h" />
+    <ClInclude Include="MosyRegistryManager.h" />
+    <ClInclude Include="MosyString.h" />
     <ClInclude Include="MosyThreadManager.h" />
     <ClInclude Include="MosyThreadMonitor.h" />
+    <ClInclude Include="MosyValue.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
@@ -169,6 +179,23 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Exports.def" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MosyBaseTypes\MosyBaseTypes.vcxproj">
+      <Project>{2ddffa73-3847-4a8a-ad0e-93d335752f9d}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\MosyGobalManager\MosyGobalManager.vcxproj">
+      <Project>{273de560-10d6-418f-af03-8458fba14dac}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\MosyRegistryManager\MosyRegistryManager.vcxproj">
+      <Project>{e13c5fdf-be95-4af1-b492-9bf46461e766}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\MosyThreadManager\MosyThreadManager.vcxproj">
+      <Project>{a219e6c6-39e2-4163-ba57-fb81e6e6139d}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

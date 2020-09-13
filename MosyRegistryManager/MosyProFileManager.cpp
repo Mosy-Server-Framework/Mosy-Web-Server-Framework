@@ -3,7 +3,7 @@
 
 bool MosyProFileManager::FileExists(wstring FilePath)
 {
-	return access(MosyString::WString2String(FilePath).c_str(),0);
+	return _access(MosyString::WString2String(FilePath).c_str(),0);
 }
 
 wstring MosyProFileManager::GetMosyProfileString(wstring Path, wstring Index1, wstring Index2, wstring Default)

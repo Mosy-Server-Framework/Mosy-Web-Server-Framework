@@ -5,13 +5,15 @@
 #include <map>
 #include <string>
 using namespace std;
+typedef  map<wstring, MosyValue> MosyRegistry;
+typedef  pair<wstring, MosyValue> MosyRegistryPair;
 
 class _declspec(dllimport) MosyRegistryManager
 {
 protected:
-	map<wstring, map<MosyValue, MosyValue>>Registry;
+	MosyRegistry Registry;
 public:
-	MosyValue Query(MosyValue MosyRegistry, MosyValue Key);
+	MosyValue Query(MosyValue Key);
 	void UpDate();
 	MosyRegistryManager();
 	~MosyRegistryManager();
