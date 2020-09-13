@@ -164,8 +164,10 @@
     <ClInclude Include="MosyCoreThread.h" />
     <ClInclude Include="MosyDataPackage.h" />
     <ClInclude Include="MosyDataSerializer.h" />
+    <ClInclude Include="MosyGobalManager.h" />
     <ClInclude Include="MosyHtmlPackage.h" />
     <ClInclude Include="MosyHtmlSerializer.h" />
+    <ClInclude Include="MosyLogger.h" />
     <ClInclude Include="MosyMap.h" />
     <ClInclude Include="MosyObject.h" />
     <ClInclude Include="MosyRegistryManager.h" />
@@ -174,6 +176,7 @@
     <ClInclude Include="MosyServerSocket.h" />
     <ClInclude Include="MosySocket.h" />
     <ClInclude Include="MosyString.h" />
+    <ClInclude Include="MosyThreadManager.h" />
     <ClInclude Include="MosyValue.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
@@ -192,6 +195,12 @@
     </ProjectReference>
     <ProjectReference Include="..\MosyDataSerializer\MosyDataSerializer.vcxproj">
       <Project>{1a17aaf8-5cf5-4482-afdc-c7a47cf9cb02}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\MosyGobalManager\MosyGobalManager.vcxproj">
+      <Project>{273de560-10d6-418f-af03-8458fba14dac}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\MosyLogger\MosyLogger.vcxproj">
+      <Project>{00ac726e-54b1-4795-9698-c18963456df2}</Project>
     </ProjectReference>
     <ProjectReference Include="..\MosyRegistryManager\MosyRegistryManager.vcxproj">
       <Project>{e13c5fdf-be95-4af1-b492-9bf46461e766}</Project>

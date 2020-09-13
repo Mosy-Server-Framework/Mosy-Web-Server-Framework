@@ -25,7 +25,6 @@ int MosyProFileManager::GetMosyProfileInt(wstring Path, wstring Index1, wstring 
 	if (FileExists(Path))
 	{
 		int d = Default;
-		wchar_t Return[MAX_PATH];
 		d = GetPrivateProfileIntW(Index1.c_str(), Index2.c_str(), Default, Path.c_str());
 		return d;
 	}
