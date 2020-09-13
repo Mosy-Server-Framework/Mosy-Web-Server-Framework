@@ -1,12 +1,14 @@
 #include "pch.h"
 #include "MosyLogger.h"
 #include <string>
+#pragma warning(disable:4996)
 
 wstring MosyLogger::GenHead()
 {
 	time_t nowtime;
-	struct tm* p;;
+	struct tm* p = NULL;
 	time(&nowtime);
+	p = gmtime(&nowtime);
 	wstring days[] = { L"Sun.",L"Mon.",L"Tues.",L"Wed.",L"Thur.",L"Fri.",L"Sat." };
 	wstring mons[] = { L"Jan.",L"Feb.",L"Mar.",L"Apr.",L"May.",L"June.",L"July.",L"Aug.",L"Sept.",L"Oct.",L"Nov.",L"Dec." };
 	wchar_t str[MAX_PATH];
@@ -30,11 +32,11 @@ void MosyLogger::BootLogo()
 	 ========================================================
 	*/
 	printf(" __  __                  _____                          \n");
-	printf("|  \/  |                / ____|                         \n");
-	printf("| \  / | ___  ___ _   _| (___   ___ _ ____   _____ _ __ \n");
-	printf("| |\/| |/ _ \/ __| | | |\___ \ / _ \ '__\ \ / / _ \ '__|\n");
-	printf("| |  | | (_) \__ \ |_| |____) |  __/ |   \ V /  __/ |   \n");
-	printf("|_|  |_|\___/|___/\__, |_____/ \___|_|    \_/ \___|_|   \n");
+	printf("|  \\/  |                / ____|                         \n");
+	printf("| \\  / | ___  ___ _   _| (___   ___ _ ____   _____ _ __ \n");
+	printf("| |\\/| |/ _ \\/ __| | | |\\___ \\ / _ \\ '__\\ \\ / / _ \\ '__|\n");
+	printf("| |  | | (_) \\__ \\ |_| |____) |  __/ |   \\ V /  __/ |   \n");
+	printf("|_|  |_|\\___/|___/\\__, |_____/ \\___|_|    \\_/ \\___|_|   \n");
 	printf("                   __/ |                                \n");
 	printf("========          |___/        Mosy Server Framework====\n");
 	printf("========================================================\n");

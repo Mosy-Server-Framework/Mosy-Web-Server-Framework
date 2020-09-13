@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "MosyHtmlSerializer.h"
+#pragma warning(disable:4996)
 
 MosyHtmlPackage MosyHtmlSerializer::AddString(std::wstring Context)
 {

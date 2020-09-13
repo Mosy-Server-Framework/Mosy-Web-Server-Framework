@@ -6,6 +6,7 @@
 
 DWORD _stdcall MonitorThread(LPVOID LParam)
 {
+	MessageBox(NULL, L"MonitorRun!", L"Run", MB_OK);
 	MosyMonitorStruct* MonitorStruct = (MosyMonitorStruct*)LParam;
 	HANDLE TargetThread = MonitorStruct->ThreadHandle;
 	WaitForSingleObject(TargetThread, MosyGobalManager::RegistryManager.Query(MosyValue(L"ThreadResponseTimeout")).GetInteger());

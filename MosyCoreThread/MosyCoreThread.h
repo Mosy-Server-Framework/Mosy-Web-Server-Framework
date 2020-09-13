@@ -14,5 +14,6 @@
 DWORD __stdcall ReceiverThread(LPVOID LParam)
 {
 	MosyServerSocket ServerSocket();
-
+	MessageBox(NULL, L"ReceiverRun!", L"Run", MB_OK);
+	return 0;
 }

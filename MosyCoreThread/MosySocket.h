@@ -3,7 +3,6 @@
 #include <string.h>
 #include <string>
 #include <direct.h>
-#include "CharsetUtils.h"
 #pragma comment(lib,"Ws2_32.lib")
 
 #define BUF_LENGTH 1024
@@ -12,7 +11,7 @@
 class _declspec(dllexport)
 	MosySocket
 #else
-class _declspec(dllimport)
+class _declspec(dllexport)
 	MosySocket
 #endif
 {

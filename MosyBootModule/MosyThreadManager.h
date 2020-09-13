@@ -1,11 +1,9 @@
 #pragma once
 #include "pch.h"
-#include "MosyMonitorThreadStruct.h"
-#include "MosyThreadMonitor.h"
 #include <list>
 using namespace std;
 
-class _declspec(dllexport) MosyThreadManager
+class _declspec(dllimport) MosyThreadManager
 {
 protected:
 	list<HANDLE> ThreadList;

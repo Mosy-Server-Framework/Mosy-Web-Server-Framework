@@ -15,6 +15,7 @@
 #include "MosySocket.h"
 #include "MosyRequestPackage.h"
 #include "MosyRequestDeserializer.h"
+#include "MosyServerApplication.h"
 #pragma warning(disable:4996)
 
 #define DEFAULT_PORT 8088
@@ -201,7 +202,7 @@ int send_file(MosySocket* sAccept, FILE *resource)
 
 int main()
 {
-	WSADATA wsaData;
+	/*WSADATA wsaData;
 	SOCKET sListen, sAccept;
 	int serverport = DEFAULT_PORT;
 	struct sockaddr_in ser, cli;
@@ -232,6 +233,7 @@ int main()
 		}
 	}
 	Server.Close();
-	WSACleanup();
+	WSACleanup();*/
+	MosyServerApplication::Boot();
 	return 0;
 }

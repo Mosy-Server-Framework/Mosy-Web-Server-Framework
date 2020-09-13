@@ -100,6 +100,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
+      <ModuleDefinitionFile>Source.def</ModuleDefinitionFile>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -116,6 +117,7 @@
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
+      <ModuleDefinitionFile>Source.def</ModuleDefinitionFile>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -132,6 +134,7 @@
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
+      <ModuleDefinitionFile>Source.def</ModuleDefinitionFile>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -152,6 +155,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
+      <ModuleDefinitionFile>Source.def</ModuleDefinitionFile>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -189,12 +193,6 @@
     <ProjectReference Include="..\MosyDataSerializer\MosyDataSerializer.vcxproj">
       <Project>{1a17aaf8-5cf5-4482-afdc-c7a47cf9cb02}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\MosyModuleManager\MosyModuleManager.vcxproj">
-      <Project>{613c4e22-39bd-4897-b127-b31f3b8b8623}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\MosyQueueManager\MosyQueueManager.vcxproj">
-      <Project>{97b0784b-c10b-4905-8be8-6811079f72db}</Project>
-    </ProjectReference>
     <ProjectReference Include="..\MosyRegistryManager\MosyRegistryManager.vcxproj">
       <Project>{e13c5fdf-be95-4af1-b492-9bf46461e766}</Project>
     </ProjectReference>
@@ -203,9 +201,6 @@
     </ProjectReference>
     <ProjectReference Include="..\MosyResponseBuilder\MosyResponseBuilder.vcxproj">
       <Project>{625c2bbc-9107-4586-bbab-9ddbac816d37}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\MosyResponseSub-Thread\MosyResponseSub-Thread.vcxproj">
-      <Project>{5112a248-37ee-42c7-8242-e253cd8fe51a}</Project>
     </ProjectReference>
     <ProjectReference Include="..\MosyThreadManager\MosyThreadManager.vcxproj">
       <Project>{a219e6c6-39e2-4163-ba57-fb81e6e6139d}</Project>
@@ -216,6 +211,9 @@
     <ProjectReference Include="..\Win32SocketLib\Win32SocketLib.vcxproj">
       <Project>{c6549537-33e7-47de-96a3-00a4b353e19d}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Source.def" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

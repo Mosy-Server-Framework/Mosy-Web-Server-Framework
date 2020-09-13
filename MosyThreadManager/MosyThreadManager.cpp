@@ -20,6 +20,40 @@ void MosyThreadManager::Remove(HANDLE Item)
 
 bool MosyThreadManager::CreateThread(LPTHREAD_START_ROUTINE lpStartAddress, LPVOID LParam)
 {
+	HANDLE CurrentHandle = ::CreateThread(NULL, NULL, lpStartAddress, LParam, NULL, NULL);
+	if (CurrentHandle == NULL)
+	{
+		return false;
+	}
+	ThreadList.push_back(CurrentHandle);
+	MosyMonitorStruct Monitor;
+	Monitor.ThreadHandle = CurrentHandle;
+	HANDLE MonitorHandle = ::CreateThread(NULL, NULL, MonitorThread, &Monitor, NULL, NULL);
+	if (MonitorHandle == NULL)
+	{
+		TerminateThread(CurrentHandle, 0);
+		Remove(CurrentHandle);
+		return false;
+	}
+	return true;
+}
 
-	return false;
+HANDLE MosyThreadManager::CreateCoreThread(LPTHREAD_START_ROUTINE lpStartAddress, LPVOID LParam)
+{
+	HANDLE CurrentHandle = ::CreateThread(NULL, NULL, lpStartAddress, LParam, NULL, NULL);
+	if (CurrentHandle == NULL)
+	{
+		return NULL;
+	}
+	ThreadList.push_back(CurrentHandle);
+	MosyMonitorStruct Monitor;
+	Monitor.ThreadHandle = CurrentHandle;
+	HANDLE MonitorHandle = ::CreateThread(NULL, NULL, MonitorThread, &Monitor, NULL, NULL);
+	if (MonitorHandle == NULL)
+	{
+		TerminateThread(CurrentHandle, 0);
+		Remove(CurrentHandle);
+		return NULL;
+	}
+	return CurrentHandle;
 }
