@@ -24,6 +24,7 @@
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>MosyResponseSubThread</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+    <ProjectName>MosyServerSub-Thread</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -156,7 +157,25 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
+    <ClInclude Include="MosyDataPackage.h" />
+    <ClInclude Include="MosyDataSerializer.h" />
+    <ClInclude Include="MosyHtmlPackage.h" />
+    <ClInclude Include="MosyMap.h" />
+    <ClInclude Include="MosyMessageQueue.h" />
+    <ClInclude Include="MosyObject.h" />
+    <ClInclude Include="MosyRequestDeserializer.h" />
+    <ClInclude Include="MosyRequestPackage.h" />
+    <ClInclude Include="MosyRequestQueuePackage.h" />
+    <ClInclude Include="MosyResponsePackage.h" />
+    <ClInclude Include="MosyResponseQueuePackage.h" />
+    <ClInclude Include="MosyResponseSerializer.h" />
+    <ClInclude Include="MosySocket.h" />
+    <ClInclude Include="MosyString.h" />
+    <ClInclude Include="MosyThreadManager.h" />
+    <ClInclude Include="MosyValue.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="Sub-Thread.h" />
+    <ClInclude Include="ThreadStruct.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp" />
@@ -166,6 +185,26 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MosyBaseTypes\MosyBaseTypes.vcxproj">
+      <Project>{2ddffa73-3847-4a8a-ad0e-93d335752f9d}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\MosyQueueManager\MosyQueueManager.vcxproj">
+      <Project>{97b0784b-c10b-4905-8be8-6811079f72db}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\MosyRequestPatcher\MosyRequestPatcher.vcxproj">
+      <Project>{2b35dd48-0a14-4eb6-8836-14249c5d6100}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\MosyResponseBuilder\MosyResponseBuilder.vcxproj">
+      <Project>{625c2bbc-9107-4586-bbab-9ddbac816d37}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\MosyThreadManager\MosyThreadManager.vcxproj">
+      <Project>{a219e6c6-39e2-4163-ba57-fb81e6e6139d}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Win32SocketLib\Win32SocketLib.vcxproj">
+      <Project>{c6549537-33e7-47de-96a3-00a4b353e19d}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

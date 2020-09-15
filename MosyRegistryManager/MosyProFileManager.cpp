@@ -1,14 +1,38 @@
 #include "pch.h"
 #include "MosyProFileManager.h"
+#pragma warning(disable:4996)
 
 bool MosyProFileManager::FileExists(wstring FilePath)
 {
-	return _access(MosyString::WString2String(FilePath).c_str(),0);
+	wchar_t szExeFilePathFileName[MAX_PATH];
+	GetModuleFileNameW(NULL, szExeFilePathFileName, MAX_PATH);
+	std::wstring str = szExeFilePathFileName;
+	int idx = str.find_last_of('\\');
+	std::wstring sss = str.substr(0, idx);
+	if (FilePath[0] == L'.')
+	{
+		FilePath = FilePath.substr(1, FilePath.length());
+		FilePath = sss + FilePath;
+	}
+	string strPath = MosyString::WString2String(FilePath);
+	bool ac = false;
+	fstream fs;
+	fs.open(strPath.c_str(), ios::in);
+	if (fs) 
+	{
+		ac = true;
+	}
+	else
+	{
+		ac = false;
+	}
+	fs.close();
+	return ac;
 }
 
 wstring MosyProFileManager::GetMosyProfileString(wstring Path, wstring Index1, wstring Index2, wstring Default)
 {
-	if (FileExists(Path))
+	//if (FileExists(Path))
 	{
 		wstring d;
 		d = Default;
@@ -22,7 +46,7 @@ wstring MosyProFileManager::GetMosyProfileString(wstring Path, wstring Index1, w
 
 int MosyProFileManager::GetMosyProfileInt(wstring Path, wstring Index1, wstring Index2, int Default)
 {
-	if (FileExists(Path))
+	//if (FileExists(Path))
 	{
 		int d = Default;
 		d = GetPrivateProfileIntW(Index1.c_str(), Index2.c_str(), Default, Path.c_str());
@@ -33,7 +57,7 @@ int MosyProFileManager::GetMosyProfileInt(wstring Path, wstring Index1, wstring 
 
 bool MosyProFileManager::GetMosyProfilebool(wstring Path, wstring Index1, wstring Index2, bool Default)
 {
-	if (FileExists(Path))
+	//if (FileExists(Path))
 	{
 		wstring d;
 		if (Default)

@@ -8,8 +8,8 @@ MosyValue MosyRegistryManager::Query(MosyValue Key)
 
 void MosyRegistryManager::UpDate()
 {
-	int Port = MosyProFileManager::GetMosyProfileInt(MOSY_CORE_PROFILE_PATH, L"LocalServer", L"Port", 80);
-	bool Debug = MosyProFileManager::GetMosyProfilebool(MOSY_CORE_PROFILE_PATH, L"LocalServer", L"DebugMode", false);
+	wstring Port = MosyProFileManager::GetMosyProfileString(MOSY_CORE_PROFILE_PATH, L"LocalServer", L"Port", L"80");
+	wstring Debug = MosyProFileManager::GetMosyProfileString(MOSY_CORE_PROFILE_PATH, L"LocalServer", L"DebugMode", L"false");
 	Registry.insert(MosyRegistryPair(L"Port", MosyValue(Port)));
 	Registry.insert(MosyRegistryPair(L"DebugMode", MosyValue(Debug)));
 	wstring ControllerRegistry = MosyProFileManager::GetMosyProfileString(MOSY_CORE_PROFILE_PATH, L"Registry", L"ControllerRegistry", MOSY_DEFAULT_CONTROLLER_REGISTRY_PATH);
@@ -27,6 +27,12 @@ void MosyRegistryManager::UpDate()
 
 MosyRegistryManager::MosyRegistryManager()
 {
+	wchar_t szExeFilePathFileName[MAX_PATH];
+	GetModuleFileNameW(NULL, szExeFilePathFileName, MAX_PATH);
+	std::wstring str = szExeFilePathFileName;
+	int idx = str.find_last_of('\\');
+	std::wstring sss = str.substr(0, idx);
+	SetCurrentDirectoryW(sss.c_str());
 	UpDate();
 }
 

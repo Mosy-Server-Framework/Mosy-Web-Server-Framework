@@ -156,7 +156,16 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
+    <ClInclude Include="MosyMap.h" />
     <ClInclude Include="MosyMessageQueue.h" />
+    <ClInclude Include="MosyObject.h" />
+    <ClInclude Include="MosyRequestPackage.h" />
+    <ClInclude Include="MosyRequestQueuePackage.h" />
+    <ClInclude Include="MosyResponsePackage.h" />
+    <ClInclude Include="MosyResponseQueuePackage.h" />
+    <ClInclude Include="MosySocket.h" />
+    <ClInclude Include="MosyString.h" />
+    <ClInclude Include="MosyValue.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>

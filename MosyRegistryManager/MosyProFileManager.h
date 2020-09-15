@@ -2,7 +2,8 @@
 #include "MosyString.h"
 #include <string>
 #ifdef WIN32
-#include <io.h>                      //C (Windows)    access
+#include <io.h> 
+#include <fstream>                   //C (Windows)    access
 #else
 #include <unistd.h>                  //C (Linux)      access   
 #endif

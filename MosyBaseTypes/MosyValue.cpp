@@ -13,7 +13,7 @@ MosyValue::MosyValue(std::wstring s)
 MosyValue::MosyValue(double s)
 {
 	wchar_t str[1000];
-	wsprintfW(str, L"%lf", s);
+	wsprintfW(str, L"%f", s);
 	Value = str;
 }
 

@@ -12,10 +12,12 @@
 #include "MosyDataSerializer.h"
 #include "MosyGobalManager.h"
 #include "MosyLogger.h"
+#include "MosyRegistryManager.h"
 
 DWORD __stdcall ReceiverThread(LPVOID LParam)
 {
-	int Port = MosyGobalManager::RegistryManager.Query(MosyValue(L"Port")).GetInteger();
+	MosyRegistryManager RegistryManager;
+	int Port = RegistryManager.Query(MosyValue(L"Port")).GetInteger();
 	MosyServerSocket ServerSocket(Port, true);
 	MessageBox(NULL, L"ReceiverRun!", L"Run", MB_OK);
 	while (1)
@@ -34,4 +36,9 @@ DWORD __stdcall ReceiverThread(LPVOID LParam)
 		}
 	}
 	return 0;
+}
+
+DWORD _stdcall SenderThread(LPVOID LParam)
+{
+
 }

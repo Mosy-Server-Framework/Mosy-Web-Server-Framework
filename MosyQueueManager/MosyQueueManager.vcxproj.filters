@@ -24,6 +24,33 @@
     <ClInclude Include="MosyMessageQueue.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="MosyResponseQueuePackage.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MosySocket.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MosyObject.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MosyRequestPackage.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MosyRequestQueuePackage.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MosyResponsePackage.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MosyMap.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MosyString.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MosyValue.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
