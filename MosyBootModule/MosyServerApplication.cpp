@@ -3,6 +3,17 @@
 #include "CoreStruct.h"
 #include "MosyMessageQueue.h"
 
+/*
+Written By Moss
+  __  __                      __ _
+ |  \/  |                    / _| |
+ | \  / | ___  ___ ___  ___ | |_| |_
+ | |\/| |/ _ \/ __/ __|/ _ \|  _| __|
+ | |  | | (_) \__ \__ \ (_) | | | |_
+ |_|  |_|\___/|___/___/\___/|_|  \__|
+ ====================================
+*/
+
 LONG WINAPI MosyUnhandledExceptionFilter(EXCEPTION_POINTERS* exp);
 
 void MosyServerApplication::Boot()
