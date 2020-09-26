@@ -48,6 +48,24 @@
     <ClInclude Include="MosyGobalManager.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="CoreStruct.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MosyRequestQueuePackage.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MosyResponsePackage.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MosyResponseQueuePackage.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MosyRequestPackage.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MosyMap.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">

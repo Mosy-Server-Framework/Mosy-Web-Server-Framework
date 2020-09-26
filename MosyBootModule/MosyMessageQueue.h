@@ -15,12 +15,10 @@ protected:
 public:
 	void PushRequestPackage(MosyRequestQueuePackage Package);
 	void PushResponsePackage(MosyResponseQueuePackage Package);
-	MosyRequestQueuePackage GetRequestPackage();
 	void PushRequestSocket(SOCKET Package);
 	SOCKET GetRequestSocket();
+	MosyRequestQueuePackage GetRequestPackage();
 	MosyResponseQueuePackage GetResponsePackage();
-	int GetQueueLength();
-	int GetSocketQueueLength();
 	MosyMessageQueue();
 	~MosyMessageQueue();
 };

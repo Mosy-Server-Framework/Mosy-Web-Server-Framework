@@ -75,6 +75,15 @@
     <ClInclude Include="MosyThreadManager.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="MosyHtmlSerializer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MosyArray.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MosyLogger.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -83,5 +92,10 @@
     <ClCompile Include="pch.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Source.def">
+      <Filter>源文件</Filter>
+    </None>
   </ItemGroup>
 </Project>

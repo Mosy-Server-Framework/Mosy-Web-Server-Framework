@@ -6,7 +6,7 @@
 #include "MosyResponsePackage.h"
 using namespace std;
 
-class _declspec(dllexport) MosyMessageQueue
+class _declspec(dllimport) MosyMessageQueue
 {
 protected:
 	queue<MosyRequestQueuePackage> RequestQueue;
@@ -15,9 +15,9 @@ protected:
 public:
 	void PushRequestPackage(MosyRequestQueuePackage Package);
 	void PushResponsePackage(MosyResponseQueuePackage Package);
-	MosyRequestQueuePackage GetRequestPackage();
 	void PushRequestSocket(SOCKET Package);
 	SOCKET GetRequestSocket();
+	MosyRequestQueuePackage GetRequestPackage();
 	MosyResponseQueuePackage GetResponsePackage();
 	int GetQueueLength();
 	int GetSocketQueueLength();

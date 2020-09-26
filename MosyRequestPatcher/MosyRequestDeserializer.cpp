@@ -6,6 +6,10 @@
 using namespace std;
 MosyRequestPackage MosyRequestDeserializer::Parse(std::wstring str)
 {
+	if (str == L"")
+	{
+		return MosyRequestPackage();
+	}
 	int index = str.find(L" ");
 	wstring method = str.substr(0, index);
 	MosyRequestPackage Package;

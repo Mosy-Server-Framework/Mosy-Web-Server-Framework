@@ -159,6 +159,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="CoreStruct.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="MosyArray.h" />
     <ClInclude Include="MosyCoreThread.h" />
@@ -169,6 +170,7 @@
     <ClInclude Include="MosyHtmlSerializer.h" />
     <ClInclude Include="MosyLogger.h" />
     <ClInclude Include="MosyMap.h" />
+    <ClInclude Include="MosyMessageQueue.h" />
     <ClInclude Include="MosyObject.h" />
     <ClInclude Include="MosyRegistryManager.h" />
     <ClInclude Include="MosyRequestDeserializer.h" />
@@ -179,6 +181,7 @@
     <ClInclude Include="MosyThreadManager.h" />
     <ClInclude Include="MosyValue.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="ThreadStruct.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp" />
@@ -202,6 +205,9 @@
     <ProjectReference Include="..\MosyLogger\MosyLogger.vcxproj">
       <Project>{00ac726e-54b1-4795-9698-c18963456df2}</Project>
     </ProjectReference>
+    <ProjectReference Include="..\MosyQueueManager\MosyQueueManager.vcxproj">
+      <Project>{97b0784b-c10b-4905-8be8-6811079f72db}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\MosyRegistryManager\MosyRegistryManager.vcxproj">
       <Project>{e13c5fdf-be95-4af1-b492-9bf46461e766}</Project>
     </ProjectReference>
@@ -210,6 +216,9 @@
     </ProjectReference>
     <ProjectReference Include="..\MosyResponseBuilder\MosyResponseBuilder.vcxproj">
       <Project>{625c2bbc-9107-4586-bbab-9ddbac816d37}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\MosyResponseSub-Thread\MosyResponseSub-Thread.vcxproj">
+      <Project>{5112a248-37ee-42c7-8242-e253cd8fe51a}</Project>
     </ProjectReference>
     <ProjectReference Include="..\MosyThreadManager\MosyThreadManager.vcxproj">
       <Project>{a219e6c6-39e2-4163-ba57-fb81e6e6139d}</Project>

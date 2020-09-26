@@ -28,7 +28,7 @@ MosySocket MosyServerSocket::Accept()
 {
 	sockaddr_in Client;
 	int Len = sizeof(Client);
-	SOCKET sAccept = accept(CoreSocket, (struct sockaddr*)&Client, &Len);
+	SOCKET sAccept = accept(CoreSocket, (sockaddr*)&Client, &Len);
 	if (sAccept == INVALID_SOCKET)
 	{
 		throw MosySocket::MosySocketException(MSE_INVALID_SOCKET, WSAGetLastError());

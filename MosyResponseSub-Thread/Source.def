@@ -1,0 +1,4 @@
+LIBRARY
+
+EXPORTS
+InitThread @1

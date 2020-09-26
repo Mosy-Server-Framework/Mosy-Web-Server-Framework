@@ -1,7 +1,3 @@
 #pragma once
+#include "pch.h"
 #include "MosyThreadManager.h"
-
-struct MosyMonitorStruct
-{
-	HANDLE ThreadHandle;
-};

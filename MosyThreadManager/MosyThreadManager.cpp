@@ -4,12 +4,12 @@
 void MosyThreadManager::Remove(HANDLE Item)
 {
 	list<HANDLE>::iterator iterator;
-	iterator = ThreadList.begin();
-	while (iterator != ThreadList.end())
+	iterator = ThreadList->begin();
+	while (iterator != ThreadList->end())
 	{
 		if ((*iterator) == Item)
 		{
-			iterator = ThreadList.erase(iterator);
+			iterator = ThreadList->erase(iterator);
 		}
 		else
 		{
@@ -25,16 +25,17 @@ bool MosyThreadManager::CreateThread(LPTHREAD_START_ROUTINE lpStartAddress, LPVO
 	{
 		return false;
 	}
-	ThreadList.push_back(CurrentHandle);
+	/*ThreadList->push_back(CurrentHandle);
 	MosyMonitorStruct Monitor;
 	Monitor.ThreadHandle = CurrentHandle;
+	Monitor.Manager = Manager;
 	HANDLE MonitorHandle = ::CreateThread(NULL, NULL, MonitorThread, &Monitor, NULL, NULL);
 	if (MonitorHandle == NULL)
 	{
 		TerminateThread(CurrentHandle, 0);
 		Remove(CurrentHandle);
 		return false;
-	}
+	}*/
 	return true;
 }
 
@@ -45,15 +46,29 @@ HANDLE MosyThreadManager::CreateCoreThread(LPTHREAD_START_ROUTINE lpStartAddress
 	{
 		return NULL;
 	}
-	ThreadList.push_back(CurrentHandle);
+	/*ThreadList->push_back(CurrentHandle);
 	MosyMonitorStruct Monitor;
 	Monitor.ThreadHandle = CurrentHandle;
-	HANDLE MonitorHandle = ::CreateThread(NULL, NULL, MonitorThread, &Monitor, NULL, NULL);
+	Monitor.Manager = Manager;
+	HANDLE MonitorHandle = ::CreateThread(NULL, NULL, MonitorThread, this, NULL, NULL);
 	if (MonitorHandle == NULL)
 	{
 		TerminateThread(CurrentHandle, 0);
 		Remove(CurrentHandle);
 		return NULL;
-	}
+	}*/
 	return CurrentHandle;
+}
+
+MosyThreadManager::MosyThreadManager()
+{
+	ThreadList = new list<HANDLE>();
+}
+
+MosyThreadManager::~MosyThreadManager()
+{
+	if (ThreadList)
+	{
+		delete ThreadList;
+	}
 }

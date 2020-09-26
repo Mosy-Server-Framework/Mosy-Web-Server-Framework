@@ -10,5 +10,7 @@ protected:
 public:
 	void Remove(HANDLE Item);
 	bool CreateThread(LPTHREAD_START_ROUTINE lpStartAddress, LPVOID LParam);
+	MosyThreadManager();
+	~MosyThreadManager();
 };
 

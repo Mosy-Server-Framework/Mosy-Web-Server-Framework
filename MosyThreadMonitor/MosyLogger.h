@@ -4,17 +4,11 @@
 #include "MosyValue.h"
 #include <string>
 #include <ctime>
-#include <queue>
 using namespace std;
 
-DWORD __stdcall LogThread(LPVOID Param);
-class _declspec(dllexport) MosyLogger
+class _declspec(dllimport) MosyLogger
 {
-protected:
-	static HANDLE Thread;
 public:
-	static wstring GenHead();
-	static queue<string> LogList;
 	static void BootLogo();
 	static void Log(MosyValue Text);
 };

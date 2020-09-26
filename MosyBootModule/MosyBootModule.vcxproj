@@ -155,12 +155,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="CoreStruct.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="MosyCoreThread.h" />
     <ClInclude Include="MosyGobalManager.h" />
     <ClInclude Include="MosyLogger.h" />
+    <ClInclude Include="MosyMap.h" />
     <ClInclude Include="MosyObject.h" />
     <ClInclude Include="MosyRegistryManager.h" />
+    <ClInclude Include="MosyRequestPackage.h" />
+    <ClInclude Include="MosyRequestQueuePackage.h" />
+    <ClInclude Include="MosyResponsePackage.h" />
+    <ClInclude Include="MosyResponseQueuePackage.h" />
     <ClInclude Include="MosyServerApplication.h" />
     <ClInclude Include="MosyString.h" />
     <ClInclude Include="MosyThreadManager.h" />
@@ -192,6 +198,9 @@
     </ProjectReference>
     <ProjectReference Include="..\MosyLogger\MosyLogger.vcxproj">
       <Project>{00ac726e-54b1-4795-9698-c18963456df2}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\MosyQueueManager\MosyQueueManager.vcxproj">
+      <Project>{97b0784b-c10b-4905-8be8-6811079f72db}</Project>
     </ProjectReference>
     <ProjectReference Include="..\MosyRegistryManager\MosyRegistryManager.vcxproj">
       <Project>{e13c5fdf-be95-4af1-b492-9bf46461e766}</Project>

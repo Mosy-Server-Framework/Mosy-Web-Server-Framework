@@ -190,6 +190,9 @@
     <ProjectReference Include="..\MosyGobalManager\MosyGobalManager.vcxproj">
       <Project>{273de560-10d6-418f-af03-8458fba14dac}</Project>
     </ProjectReference>
+    <ProjectReference Include="..\MosyLogger\MosyLogger.vcxproj">
+      <Project>{00ac726e-54b1-4795-9698-c18963456df2}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\MosyRegistryManager\MosyRegistryManager.vcxproj">
       <Project>{e13c5fdf-be95-4af1-b492-9bf46461e766}</Project>
     </ProjectReference>

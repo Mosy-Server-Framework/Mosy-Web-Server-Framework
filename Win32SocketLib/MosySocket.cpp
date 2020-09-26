@@ -75,15 +75,17 @@ std::wstring MosySocket::Receive()
 		char recv_buf[BUF_LENGTH];
 		memset(recv_buf, 0, sizeof(recv_buf));
 		int Result = recv(CoreSocket, recv_buf, sizeof(recv_buf), 0);
-		if (Result == SOCKET_ERROR)   //Ω” ’¥ÌŒÛ
+		if (Result == SOCKET_ERROR)
 		{
-			throw MosySocketException(MSE_ERROR);
+			//throw MosySocketException(MSE_ERROR);
 			return std::wstring();
 		}
 		else
 		{
 			std::string tstr = recv_buf;
 			RecvStr += String2WString(tstr);
+			//wprintf(RecvStr.c_str());
+			//printf("\n");
 		}
 		return RecvStr;
 	}
@@ -100,7 +102,7 @@ void MosySocket::Send(std::wstring Msg)
 	if (HasConnected())
 	{
 		std::string snd = WString2String(Msg);
-		send(CoreSocket, snd.c_str(), MIN_BUF, 0);
+		send(CoreSocket, snd.c_str(), snd.length(), 0);
 	}
 }
 

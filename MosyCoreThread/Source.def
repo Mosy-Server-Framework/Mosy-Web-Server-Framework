@@ -2,3 +2,4 @@ LIBRARY
 
 EXPORTS
 ReceiverThread @1
+SenderThread @2

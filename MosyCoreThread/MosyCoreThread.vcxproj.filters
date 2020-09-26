@@ -75,6 +75,15 @@
     <ClInclude Include="MosyThreadManager.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="ThreadStruct.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="CoreStruct.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MosyMessageQueue.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
