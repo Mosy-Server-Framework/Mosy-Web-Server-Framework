@@ -3,6 +3,7 @@
 #include <string.h>
 #include <string>
 #include <direct.h>
+#include <vector>
 #include "CharsetUtils.h"
 #pragma comment(lib,"Ws2_32.lib")
 
@@ -93,8 +94,11 @@ public:
 	void Send(std::string Msg);
 	DWORD GetStatusCode();
 	MosySocket(SOCKET Socket);
+	void Send(std::vector<char> Msg, int size);
 	MosySocket();
 	MosySocket(MosySocket* Source);
+	int GetConnectPort();
+	wstring GetConnectAddr();
 	void operator =(MosySocket* Source);
 	void Close();
 	SOCKET GetHandler();

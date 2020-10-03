@@ -249,7 +249,9 @@ MosyResponsePackage MosyResponseSerializer::Serialize(ResponseStatus Status, Mos
 	default:
 		break;
 	}
-	Response.Body = DataPackage.Data;
+	//Response.Body = DataPackage.Data.data();
+	Response.Body.insert(Response.Body.begin(), DataPackage.Data.c_str(), DataPackage.Data.c_str() + DataPackage.Data.length());
+	Response.Size = DataPackage.Data.length();
 	return Response;
 }
 
@@ -503,6 +505,8 @@ MosyResponsePackage MosyResponseSerializer::Serialize(ResponseStatus Status, Mos
 	default:
 		break;
 	}
-	Response.Body = DataPackage.Html;
+	//Response.Body = DataPackage.Html;
+	Response.Body.insert(Response.Body.begin(), DataPackage.Html.data(), DataPackage.Html.data() + DataPackage.Length);
+	Response.Size = DataPackage.Length;
 	return Response;
 }

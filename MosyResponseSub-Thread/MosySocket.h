@@ -80,16 +80,19 @@ public:
 			return WSAErrCode;
 		}
 	};
-	bool HasConnected();
-	std::wstring Receive();
-	void Send(std::wstring Msg);
-	void Send(std::string Msg);
-	DWORD GetStatusCode();
-	MosySocket(SOCKET Socket);
-	MosySocket();
-	MosySocket(MosySocket* Source);
-	void operator =(MosySocket* Source);
-	void Close();
-	SOCKET GetHandler();
+	bool HasConnected() throw(MosySocketException);
+	std::wstring Receive() throw(MosySocketException);
+	void Send(std::wstring Msg) throw(MosySocketException);
+	void Send(std::string Msg) throw(MosySocketException);
+	void Send(std::vector<char> Msg, int size) throw(MosySocketException);
+	DWORD GetStatusCode() throw(MosySocketException);
+	MosySocket(SOCKET Socket) throw(MosySocketException);
+	MosySocket() throw(MosySocketException);
+	MosySocket(MosySocket* Source) throw(MosySocketException);
+	int GetConnectPort();
+	std::wstring GetConnectAddr();
+	void operator =(MosySocket* Source) throw(MosySocketException);
+	void Close() throw(MosySocketException);
+	SOCKET GetHandler() throw(MosySocketException);
 };
 

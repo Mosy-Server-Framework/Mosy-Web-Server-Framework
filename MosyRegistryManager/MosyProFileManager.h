@@ -10,7 +10,8 @@
 using namespace std;
 #define MOSY_CORE_PROFILE_PATH L".\\MosyConfig\\Config.ini"
 #define MOSY_DEFAULT_CONTROLLER_REGISTRY_PATH L".\\MosyConfig\\MosyControllerRegistry.ini"
-#define MOSY_DEFAULT_CONTROLLER_INFO_PATH L".\\MosyConfig\\MosyControllerInfo.ini"
+#define MOSY_DEFAULT_CONTROLLER_INFO_PATH L".\\MosyConfig\\MosyControllerModulesRegistry.ini"
+#define MOSY_DEFAULT_REQUEST_WRAPPER_PATH L".\\MosyConfig\\MosyRequestWrapper.ini"
 
 class MosyProFileManager
 {

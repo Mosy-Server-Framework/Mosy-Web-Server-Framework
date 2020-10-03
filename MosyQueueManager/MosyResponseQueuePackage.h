@@ -7,9 +7,10 @@ class _declspec(dllimport) MosyResponseQueuePackage :
 	public MosyObject
 {
 public:
-	MosySocket ClientSocket;//Response Target Client Socket
+	SOCKET ClientSocket;//Response Target Client Socket
 	MosyResponsePackage Package;//Response Data Package
 	MosyResponseQueuePackage();
 	~MosyResponseQueuePackage();
+	void operator=(MosyResponseQueuePackage p);
 };
 

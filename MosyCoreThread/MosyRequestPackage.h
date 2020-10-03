@@ -33,10 +33,11 @@ class _declspec(dllexport)
 #endif
 {
 public:
-	METHOD Method;
+	MosyValue Method;
 	std::wstring TargetInterface;
 	MosyMap Params;
 	MosyRequestPackage();
 	~MosyRequestPackage();
+	void operator=(MosyRequestPackage p);
 };
 

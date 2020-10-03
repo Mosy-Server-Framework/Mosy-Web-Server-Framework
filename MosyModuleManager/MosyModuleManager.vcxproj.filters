@@ -21,12 +21,39 @@
     <ClInclude Include="pch.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="MosyModuleManager.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MosyString.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MosyValue.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MosyArray.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MosyLogger.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MosyModuleLoader.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MosyObject.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MosyRegistryManager.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="pch.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="MosyModuleManager.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

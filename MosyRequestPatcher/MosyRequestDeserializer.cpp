@@ -14,72 +14,7 @@ MosyRequestPackage MosyRequestDeserializer::Parse(std::wstring str)
 	wstring method = str.substr(0, index);
 	MosyRequestPackage Package;
 	//Parse Method
-	{
-		if (method == L"GET")
-		{
-			Package.Method = MOSY_GET;
-		}
-		else if (method == L"POST")
-		{
-			Package.Method = MOSY_POST;
-		}
-		else if (method == L"PUT")
-		{
-			Package.Method = MOSY_PUT;
-		}
-		else if (method == L"PATCH")
-		{
-			Package.Method = MOSY_PATCH;
-		}
-		else if (method == L"DELETE")
-		{
-			Package.Method = MOSY_DELETE;
-		}
-		else if (method == L"COPY")
-		{
-			Package.Method = MOSY_COPY;
-		}
-		else if (method == L"HEAD")
-		{
-			Package.Method = MOSY_HEAD;
-		}
-		else if (method == L"OPTIONS")
-		{
-			Package.Method = MOSY_OPTIONS;
-		}
-		else if (method == L"LINK")
-		{
-			Package.Method = MOSY_LINK;
-		}
-		else if (method == L"UNLINK")
-		{
-			Package.Method = MOSY_UNLINK;
-		}
-		else if (method == L"PURGE")
-		{
-			Package.Method = MOSY_PURGE;
-		}
-		else if (method == L"LOCK")
-		{
-			Package.Method = MOSY_LOCK;
-		}
-		else if (method == L"UNLOCK")
-		{
-			Package.Method = MOSY_UNLOCK;
-		}
-		else if (method == L"PROPFIND")
-		{
-			Package.Method = MOSY_PROPFIND;
-		}
-		else if (method == L"VIEW")
-		{
-			Package.Method = MOSY_VIEW;
-		}
-		else
-		{
-			return MosyRequestPackage();
-		}
-	}
+	Package.Method = method;
 	int index2 = str.find(L" ", index + 1);
 	wstring url = str.substr(index + 1, index2 - index);
 	index = url.find(L"?");
@@ -200,7 +135,7 @@ MosyRequestPackage MosyRequestDeserializer::Parse(std::string str)
 	string method = str.substr(0, index);
 	MosyRequestPackage Package;
 	//Parse Method
-	{
+	/*{
 		if (method == "GET")
 		{
 			Package.Method = MOSY_GET;
@@ -265,7 +200,8 @@ MosyRequestPackage MosyRequestDeserializer::Parse(std::string str)
 		{
 			return MosyRequestPackage();
 		}
-	}
+	}*/
+	Package.Method = MosyString::String2WString(method);
 	int index2 = str.find(" ", index + 1);
 	string url = str.substr(index + 1, index2 - index);
 	index = url.find("?");

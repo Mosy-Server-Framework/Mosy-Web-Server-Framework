@@ -22,5 +22,10 @@ public:
 	std::wstring GetString();
 	bool GetBoolean();
 	virtual MosyObject* obj()override;
+	bool operator <(const MosyValue& MV)const;
+	bool operator >(const MosyValue& MV)const;
+	bool operator <=(const MosyValue& MV)const;
+	bool operator >=(const MosyValue& MV)const;
+	bool operator()(const MosyValue& MV)const;
 };
 

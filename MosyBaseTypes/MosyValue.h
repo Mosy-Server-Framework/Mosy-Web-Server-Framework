@@ -19,9 +19,15 @@ public:
 	MosyValue(std::wstring s);
 	MosyValue(double s);
 	int GetInteger();
+	long long int GetLLInteger();
 	double GetDouble();
 	std::wstring GetString();
 	bool GetBoolean();
 	virtual MosyObject* obj()override;
+	bool operator <(const MosyValue& MV)const;
+	bool operator >(const MosyValue& MV)const;
+	bool operator <=(const MosyValue& MV)const;
+	bool operator >=(const MosyValue& MV)const;
+	bool operator()(const MosyValue& MV)const;
 };
 

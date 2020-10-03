@@ -38,31 +38,32 @@ DWORD __stdcall ReceiverThread(LPVOID LParam)
 				char str[1000];
 				sprintf(str, "Accept Failed:%d", WSAGetLastError());
 				MosyLogger::Log(MosyValue(MosyString::String2WString(str)));
+				sAccept.Close();
 			}
 			else
 			{
 				//MosyLogger::Log(MosyValue(L""));
 				//MosyLogger::Log(MosyValue(sAccept.Receive()));
-				MosyLogger::Log(MosyValue(L"Receive Data"));
+				//MosyLogger::Log(MosyValue(L"Receive Data"));
 				ThreadParamStruct Struct;
 				Struct.Queue = Queue;
 				Struct.TargetSocket = sAccept.GetHandler();
 				SOCKET s = sAccept.GetHandler();
 				Queue->PushRequestSocket(s);
-				ThreadManager->CreateThread(InitThread, Queue);
+				ThreadManager->CreateThread(InitThread, LParam);
 			}
 		}
-		catch (MosySocket::MosySocketException* e)
+		catch (MosySocket::MosySocketException e)
 		{
-			MosyLogger::Log(MosyValue(MosyString::String2WString(e->what())));
-			ServerSocket.Close();
+			MosyLogger::Log(MosyValue(MosyString::String2WString(e.what())));
+			/*ServerSocket.Close();
 			ServerSocket.SetupServerSocket();
 			ServerSocket.BindServer();
-			ServerSocket.ListenServer();
+			ServerSocket.ListenServer();*/
 		}
-		catch (exception* e)
+		catch (exception e)
 		{
-			MosyLogger::Log(MosyValue(MosyString::String2WString(e->what())));
+			MosyLogger::Log(MosyValue(MosyString::String2WString(e.what())));
 		}
 	}
 	return 0;
@@ -88,9 +89,9 @@ DWORD __stdcall SenderThread(LPVOID LParam)
 				ThreadManager->CreateCoreThread(SubSenderThread, LParam);
 			}
 		}
-		catch (exception* e)
+		catch (exception e)
 		{
-			MosyLogger::Log(MosyValue(MosyString::String2WString(e->what())));
+			MosyLogger::Log(MosyValue(MosyString::String2WString(e.what())));
 		}
 		Sleep(1);
 	}
@@ -125,9 +126,9 @@ DWORD __stdcall SubSenderThread(LPVOID LParam)
 				Socket.Close();
 			}
 		}
-		catch (exception* e)
+		catch (exception e)
 		{
-			MosyLogger::Log(MosyValue(MosyString::String2WString(e->what())));
+			MosyLogger::Log(MosyValue(MosyString::String2WString(e.what())));
 		}
 		Sleep(1);
 	}

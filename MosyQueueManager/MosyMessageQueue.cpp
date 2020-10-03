@@ -4,32 +4,32 @@ CRITICAL_SECTION Critical;
 
 void MosyMessageQueue::PushRequestPackage(MosyRequestQueuePackage Package)
 {
-	EnterCriticalSection(&Critical);
+	//EnterCriticalSection(&Critical);
 	RequestQueue.push(Package);
-	LeaveCriticalSection(&Critical);
+	//LeaveCriticalSection(&Critical);
 }
 
 void MosyMessageQueue::PushResponsePackage(MosyResponseQueuePackage Package)
 {
-	EnterCriticalSection(&Critical);
+	//EnterCriticalSection(&Critical);
 	ResponseQueue.push(Package);
-	LeaveCriticalSection(&Critical);
+	//LeaveCriticalSection(&Critical);
 }
 
 MosyRequestQueuePackage MosyMessageQueue::GetRequestPackage()
 {
 	MosyRequestQueuePackage Package = RequestQueue.front();
-	EnterCriticalSection(&Critical);
+	//EnterCriticalSection(&Critical);
 	RequestQueue.pop();
-	LeaveCriticalSection(&Critical);
+	//LeaveCriticalSection(&Critical);
 	return Package;
 }
 
 void MosyMessageQueue::PushRequestSocket(SOCKET Package)
 {
-	EnterCriticalSection(&Critical);
+	//EnterCriticalSection(&Critical);
 	SocketQueue.push(Package);
-	LeaveCriticalSection(&Critical);
+	//LeaveCriticalSection(&Critical);
 }
 
 SOCKET MosyMessageQueue::GetRequestSocket()
@@ -50,10 +50,14 @@ MosyResponseQueuePackage MosyMessageQueue::GetResponsePackage()
 		MosyResponseQueuePackage Package;
 		return Package;
 	}
-	MosyResponseQueuePackage Package = ResponseQueue.front();
-	EnterCriticalSection(&Critical);
-	ResponseQueue.pop();
-	LeaveCriticalSection(&Critical);
+	MosyResponseQueuePackage Package;
+	if (&ResponseQueue.front() != NULL)
+	{
+		Package = ResponseQueue.front();
+		//EnterCriticalSection(&Critical);
+		ResponseQueue.pop();
+		//LeaveCriticalSection(&Critical);
+	}
 	return Package;
 }
 

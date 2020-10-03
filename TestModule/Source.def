@@ -1,0 +1,3 @@
+LIBRARY TestLibrary
+EXPORTS
+TestRest @1

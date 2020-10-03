@@ -3,8 +3,9 @@
 #endif
 #include "pch.h"
 #include "MosySocket.h"
+#pragma warning(disable:4996)
 
-void MosySocket::SetupSocket()
+void MosySocket::SetupSocket() throw(MosySocketException)
 {
 	WSADATA wsaData;
 	if (WSAStartup(MAKEWORD(2, 2), &wsaData) != 0)
@@ -20,7 +21,7 @@ void MosySocket::SetupSocket()
 	}
 }
 
-void MosySocket::Listen()
+void MosySocket::Listen() throw(MosySocketException)
 {
 	if (listen(CoreSocket, 5) == SOCKET_ERROR)
 	{
@@ -35,12 +36,12 @@ void MosySocket::Bind(DWORD Port)
 	Bind();
 }
 
-void MosySocket::Bind()
+void MosySocket::Bind() throw(MosySocketException)
 {
 	sockaddr_in ser;
 	ser.sin_family = AF_INET;
-	ser.sin_port = htons(Port);               //服务器端口号
-	ser.sin_addr.s_addr = htonl(INADDR_ANY);   //服务器IP地址，默认使用本机IP
+	ser.sin_port = htons(Port);
+	ser.sin_addr.s_addr = htonl(INADDR_ANY);
 	if (bind(CoreSocket, (LPSOCKADDR)&ser, sizeof(ser)) == SOCKET_ERROR)
 	{
 		throw MosySocketException(MSE_FAILED_BIND, WSAGetLastError());
@@ -67,7 +68,7 @@ bool MosySocket::HasConnected()
 	return (CoreSocket != NULL && CoreSocket != INVALID_SOCKET);
 }
 
-std::wstring MosySocket::Receive()
+std::wstring MosySocket::Receive() throw(MosySocketException)
 {
 	if (HasConnected())
 	{
@@ -77,15 +78,13 @@ std::wstring MosySocket::Receive()
 		int Result = recv(CoreSocket, recv_buf, sizeof(recv_buf), 0);
 		if (Result == SOCKET_ERROR)
 		{
-			//throw MosySocketException(MSE_ERROR);
+			throw MosySocketException(MSE_ERROR);
 			return std::wstring();
 		}
 		else
 		{
 			std::string tstr = recv_buf;
 			RecvStr += String2WString(tstr);
-			//wprintf(RecvStr.c_str());
-			//printf("\n");
 		}
 		return RecvStr;
 	}
@@ -97,7 +96,7 @@ int Min(int a, int b)
 	return (((a) < (b)) ? (a) : (b));
 }
 
-void MosySocket::Send(std::wstring Msg)
+void MosySocket::Send(std::wstring Msg) throw(MosySocketException)
 {
 	if (HasConnected())
 	{
@@ -106,7 +105,7 @@ void MosySocket::Send(std::wstring Msg)
 	}
 }
 
-void MosySocket::Send(std::string Msg)
+void MosySocket::Send(std::string Msg) throw(MosySocketException)
 {
 	if (HasConnected())
 	{
@@ -114,12 +113,12 @@ void MosySocket::Send(std::string Msg)
 	}
 }
 
-DWORD MosySocket::GetStatusCode()
+DWORD MosySocket::GetStatusCode() throw(MosySocketException)
 {
 	return ConnectStatus;
 }
 
-MosySocket::MosySocket(SOCKET Socket)
+MosySocket::MosySocket(SOCKET Socket) throw(MosySocketException)
 {
 	if (Socket == INVALID_SOCKET)
 	{
@@ -132,11 +131,55 @@ MosySocket::MosySocket(SOCKET Socket)
 	}
 }
 
+void MosySocket::Send(std::vector<char> Msg, int size)
+{
+	if (HasConnected())
+	{
+		send(CoreSocket, Msg.data(), size, 0);
+	}
+}
+
 MosySocket::MosySocket()
 {
 }
 
-MosySocket::MosySocket(MosySocket* Source)
+int MosySocket::GetConnectPort()
+{
+	if (HasConnected())
+	{
+		struct sockaddr_in sa;
+		int len = sizeof(sa);
+		if (!getpeername(CoreSocket, (struct sockaddr *)&sa, &len))
+		{
+			return ntohs(sa.sin_port);
+		}
+	}
+	else
+	{
+		throw MosySocketException(MSE_ERROR);
+	}
+	return 0;
+}
+
+wstring MosySocket::GetConnectAddr()
+{
+	if (HasConnected())
+	{
+		struct sockaddr_in sa;
+		int len = sizeof(sa);
+		if (!getpeername(CoreSocket, (struct sockaddr *)&sa, &len))
+		{
+			return String2WString(inet_ntoa(sa.sin_addr));
+		}
+	}
+	else
+	{
+		throw MosySocketException(MSE_ERROR);
+	}
+	return wstring();
+}
+
+MosySocket::MosySocket(MosySocket* Source) throw(MosySocketException)
 {
 	if (Source->CoreSocket == INVALID_SOCKET)
 	{
@@ -150,7 +193,7 @@ MosySocket::MosySocket(MosySocket* Source)
 	}
 }
 
-void MosySocket::operator=(MosySocket * Source)
+void MosySocket::operator=(MosySocket * Source) throw(MosySocketException)
 {
 	if (Source->CoreSocket == INVALID_SOCKET)
 	{
@@ -164,13 +207,13 @@ void MosySocket::operator=(MosySocket * Source)
 	}
 }
 
-void MosySocket::Close()
+void MosySocket::Close() throw(MosySocketException)
 {
 	closesocket(CoreSocket);
 	CoreSocket = INVALID_SOCKET;
 }
 
-SOCKET MosySocket::GetHandler()
+SOCKET MosySocket::GetHandler() throw(MosySocketException)
 {
 	return CoreSocket;
 }

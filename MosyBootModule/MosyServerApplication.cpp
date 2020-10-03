@@ -21,11 +21,13 @@ void MosyServerApplication::Boot()
 	MosyLogger::BootLogo();
 	CoreStruct Struct;
 	MosyMessageQueue MessageQueue;
+	MosyModuleManager ModuleManager;
+	MosyThreadManager ThreadManager;
 	Struct.MessageQueue = &MessageQueue;
-	Struct.ThreadManager = &MosyGobalManager::ThreadManager;
+	Struct.ThreadManager = &ThreadManager;
+	Struct.ModuleManager = &ModuleManager;
 	MosyGobalManager::ThreadManager.Manager = Struct.ThreadManager;
 	HANDLE Receiver = MosyGobalManager::ThreadManager.CreateCoreThread(ReceiverThread, &Struct);
-	//HANDLE Sender = MosyGobalManager::ThreadManager.CreateCoreThread(SenderThread, &Struct);
 	::SetUnhandledExceptionFilter(MosyUnhandledExceptionFilter);
 	if (Receiver == NULL)
 	{

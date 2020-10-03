@@ -4,27 +4,27 @@
 #include "pch.h"
 #include "MosyServerSocket.h"
 
-void MosyServerSocket::BindServer()
+void MosyServerSocket::BindServer() throw(MosySocketException)
 {
 	BindServer(Port);
 }
 
-void MosyServerSocket::BindServer(int Port)
+void MosyServerSocket::BindServer(int Port) throw(MosySocketException)
 {
 	Bind(Port);
 }
 
-void MosyServerSocket::SetupServerSocket()
+void MosyServerSocket::SetupServerSocket() throw(MosySocketException)
 {
 	SetupSocket();
 }
 
-void MosyServerSocket::ListenServer()
+void MosyServerSocket::ListenServer() throw(MosySocketException)
 {
 	Listen();
 }
 
-MosySocket MosyServerSocket::Accept()
+MosySocket MosyServerSocket::Accept() throw(MosySocketException)
 {
 	sockaddr_in Client;
 	int Len = sizeof(Client);
@@ -37,17 +37,17 @@ MosySocket MosyServerSocket::Accept()
 	return MosySocket(sAccept);
 }
 
-MosyServerSocket::MosyServerSocket()
+MosyServerSocket::MosyServerSocket() throw(MosySocketException)
 {
 	Port = 80;
 }
 
-MosyServerSocket::MosyServerSocket(int Port)
+MosyServerSocket::MosyServerSocket(int Port) throw(MosySocketException)
 {
 	this->Port = Port;
 }
 
-MosyServerSocket::MosyServerSocket(bool AutoBind)
+MosyServerSocket::MosyServerSocket(bool AutoBind) throw(MosySocketException)
 {
 	MosyServerSocket();
 	if (AutoBind)

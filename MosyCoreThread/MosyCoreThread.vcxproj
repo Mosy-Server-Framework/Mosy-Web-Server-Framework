@@ -205,6 +205,12 @@
     <ProjectReference Include="..\MosyLogger\MosyLogger.vcxproj">
       <Project>{00ac726e-54b1-4795-9698-c18963456df2}</Project>
     </ProjectReference>
+    <ProjectReference Include="..\MosyModuleLoader\MosyModuleLoader.vcxproj">
+      <Project>{02060bf0-481d-46b0-8da7-4c767a9efe61}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\MosyModuleManager\MosyModuleManager.vcxproj">
+      <Project>{613c4e22-39bd-4897-b127-b31f3b8b8623}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\MosyQueueManager\MosyQueueManager.vcxproj">
       <Project>{97b0784b-c10b-4905-8be8-6811079f72db}</Project>
     </ProjectReference>

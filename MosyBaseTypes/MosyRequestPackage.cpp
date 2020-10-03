@@ -10,4 +10,12 @@ MosyRequestPackage::MosyRequestPackage()
 
 MosyRequestPackage::~MosyRequestPackage()
 {
+	MosyMap().swap(Params);
+}
+
+void MosyRequestPackage::operator=(MosyRequestPackage p)
+{
+	Params = p.Params;
+	TargetInterface = p.TargetInterface;
+	Method = p.Method;
 }

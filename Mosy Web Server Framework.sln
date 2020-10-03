@@ -23,7 +23,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MosyThreadManager", "MosyTh
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MosyThreadMonitor", "MosyThreadMonitor\MosyThreadMonitor.vcxproj", "{AC1C731A-4767-4015-ADB8-E5B7541C6B0D}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MosyResponseSub-Thread", "MosyResponseSub-Thread\MosyResponseSub-Thread.vcxproj", "{5112A248-37EE-42C7-8242-E253CD8FE51A}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MosyServerSub-Thread", "MosyResponseSub-Thread\MosyResponseSub-Thread.vcxproj", "{5112A248-37EE-42C7-8242-E253CD8FE51A}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MosyQueueManager", "MosyQueueManager\MosyQueueManager.vcxproj", "{97B0784B-C10B-4905-8BE8-6811079F72DB}"
 EndProject
@@ -34,6 +34,14 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MosyLogger", "MosyLogger\MosyLogger.vcxproj", "{00AC726E-54B1-4795-9698-C18963456DF2}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MosyGobalManager", "MosyGobalManager\MosyGobalManager.vcxproj", "{273DE560-10D6-418F-AF03-8458FBA14DAC}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MosyModuleLoader", "MosyModuleLoader\MosyModuleLoader.vcxproj", "{02060BF0-481D-46B0-8DA7-4C767A9EFE61}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ModuleTests", "ModuleTests", "{093414FA-8112-4E1C-9EF6-E7AFA7CA210E}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestModule", "TestModule\TestModule.vcxproj", "{DC1B3827-2405-4A09-9E39-350607C35C47}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MosyRequestWrapper", "MosyRequestWrapper\MosyRequestWrapper.vcxproj", "{FE1719BA-E480-499D-9F82-E41FBD17D7AD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -171,9 +179,36 @@ Global
 		{273DE560-10D6-418F-AF03-8458FBA14DAC}.Release|x64.Build.0 = Release|x64
 		{273DE560-10D6-418F-AF03-8458FBA14DAC}.Release|x86.ActiveCfg = Release|Win32
 		{273DE560-10D6-418F-AF03-8458FBA14DAC}.Release|x86.Build.0 = Release|Win32
+		{02060BF0-481D-46B0-8DA7-4C767A9EFE61}.Debug|x64.ActiveCfg = Debug|x64
+		{02060BF0-481D-46B0-8DA7-4C767A9EFE61}.Debug|x64.Build.0 = Debug|x64
+		{02060BF0-481D-46B0-8DA7-4C767A9EFE61}.Debug|x86.ActiveCfg = Debug|Win32
+		{02060BF0-481D-46B0-8DA7-4C767A9EFE61}.Debug|x86.Build.0 = Debug|Win32
+		{02060BF0-481D-46B0-8DA7-4C767A9EFE61}.Release|x64.ActiveCfg = Release|x64
+		{02060BF0-481D-46B0-8DA7-4C767A9EFE61}.Release|x64.Build.0 = Release|x64
+		{02060BF0-481D-46B0-8DA7-4C767A9EFE61}.Release|x86.ActiveCfg = Release|Win32
+		{02060BF0-481D-46B0-8DA7-4C767A9EFE61}.Release|x86.Build.0 = Release|Win32
+		{DC1B3827-2405-4A09-9E39-350607C35C47}.Debug|x64.ActiveCfg = Debug|x64
+		{DC1B3827-2405-4A09-9E39-350607C35C47}.Debug|x64.Build.0 = Debug|x64
+		{DC1B3827-2405-4A09-9E39-350607C35C47}.Debug|x86.ActiveCfg = Debug|Win32
+		{DC1B3827-2405-4A09-9E39-350607C35C47}.Debug|x86.Build.0 = Debug|Win32
+		{DC1B3827-2405-4A09-9E39-350607C35C47}.Release|x64.ActiveCfg = Release|x64
+		{DC1B3827-2405-4A09-9E39-350607C35C47}.Release|x64.Build.0 = Release|x64
+		{DC1B3827-2405-4A09-9E39-350607C35C47}.Release|x86.ActiveCfg = Release|Win32
+		{DC1B3827-2405-4A09-9E39-350607C35C47}.Release|x86.Build.0 = Release|Win32
+		{FE1719BA-E480-499D-9F82-E41FBD17D7AD}.Debug|x64.ActiveCfg = Debug|x64
+		{FE1719BA-E480-499D-9F82-E41FBD17D7AD}.Debug|x64.Build.0 = Debug|x64
+		{FE1719BA-E480-499D-9F82-E41FBD17D7AD}.Debug|x86.ActiveCfg = Debug|Win32
+		{FE1719BA-E480-499D-9F82-E41FBD17D7AD}.Debug|x86.Build.0 = Debug|Win32
+		{FE1719BA-E480-499D-9F82-E41FBD17D7AD}.Release|x64.ActiveCfg = Release|x64
+		{FE1719BA-E480-499D-9F82-E41FBD17D7AD}.Release|x64.Build.0 = Release|x64
+		{FE1719BA-E480-499D-9F82-E41FBD17D7AD}.Release|x86.ActiveCfg = Release|Win32
+		{FE1719BA-E480-499D-9F82-E41FBD17D7AD}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{DC1B3827-2405-4A09-9E39-350607C35C47} = {093414FA-8112-4E1C-9EF6-E7AFA7CA210E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {000B169B-6A8F-422C-B3E1-8E209B588A58}

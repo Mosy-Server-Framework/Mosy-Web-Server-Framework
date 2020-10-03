@@ -22,6 +22,11 @@ int MosyValue::GetInteger()
 	return atoi(MosyString::WString2String(Value).c_str());
 }
 
+long long int MosyValue::GetLLInteger()
+{
+	return atoll(MosyString::WString2String(Value).c_str());
+}
+
 double MosyValue::GetDouble()
 {
 	return atof(MosyString::WString2String(Value).c_str());
@@ -44,4 +49,29 @@ bool MosyValue::GetBoolean()
 MosyObject * MosyValue::obj()
 {
 	return this;
+}
+
+bool MosyValue::operator <(const MosyValue& MV)const
+{
+	return Value < MV.Value;
+}
+
+bool MosyValue::operator >(const MosyValue& MV)const
+{
+	return Value > MV.Value;
+}
+
+bool MosyValue::operator <=(const MosyValue& MV)const
+{
+	return Value <= MV.Value;
+}
+
+bool MosyValue::operator >=(const MosyValue& MV)const
+{
+	return Value >= MV.Value;
+}
+
+bool MosyValue::operator()(const MosyValue& MV)const
+{
+	return Value < MV.Value;
 }

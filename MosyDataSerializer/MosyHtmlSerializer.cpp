@@ -5,7 +5,7 @@
 MosyHtmlPackage MosyHtmlSerializer::AddString(std::wstring Context)
 {
 	MosyHtmlPackage Package;
-	Package.Html = Context;
+	Package.Html.insert(Package.Html.begin(), Context.c_str(), Context.c_str() + Context.length());
 	Package.Length = strlen(MosyString::WString2String(Context).c_str()) * sizeof(char);
 	return Package;
 }
@@ -13,7 +13,7 @@ MosyHtmlPackage MosyHtmlSerializer::AddString(std::wstring Context)
 MosyHtmlPackage MosyHtmlSerializer::AddString(std::string Context)
 {
 	MosyHtmlPackage Package;
-	Package.Html = MosyString::String2WString(Context);
+	Package.Html.insert(Package.Html.begin(), Context.c_str(), Context.c_str() + Context.length());
 	Package.Length = strlen(Context.c_str()) * sizeof(char);
 	return Package;
 }
@@ -26,7 +26,7 @@ MosyHtmlPackage MosyHtmlSerializer::AddFile(std::wstring FilePath)
 MosyHtmlPackage MosyHtmlSerializer::AddFile(std::string FilePath)
 {
 	MosyHtmlPackage Package;
-	wchar_t szExeFilePathFileName[MAX_PATH];
+	/*wchar_t szExeFilePathFileName[MAX_PATH];
 	GetModuleFileNameW(NULL, szExeFilePathFileName, MAX_PATH);
 	std::wstring str = szExeFilePathFileName;
 	int idx = str.find_last_of('\\');
@@ -40,30 +40,25 @@ MosyHtmlPackage MosyHtmlSerializer::AddFile(std::string FilePath)
 		}
 	}
 	FilePath = MosyString::WString2String(sss) + FilePath;
-	FilePath = FilePath.substr(0, FilePath.find_last_not_of(L' ') + 1);
+	FilePath = FilePath.substr(0, FilePath.find_last_not_of(L' ') + 1);*/
 	std::wstring tp = MosyString::String2WString(FilePath.substr(FilePath.find_last_of('.') + 1, FilePath.length()));
-	/*if (tp == L"svg" || tp == L"bmp" || tp == L"webp" || tp == L"gif" || tp == L"png" || tp == L"jpg" || tp == L"jpeg")
+	if (FileTypes.count(tp))
 	{
-		std::wstring w = L"image/";
-		Package.type = w + tp;
-		if (tp == L"svg")
-		{
-			Package.type += L"+xml";
-		}
+		Package.type = FileTypes[tp];
 	}
 	else
 	{
-		std::wstring w = L"text/";
-		Package.type = L"text/" + tp;
-	}*/
-	Package.type = FileTypes[tp];
-	FILE *resource = fopen(FilePath.c_str(), "rb");
+		tp = L"";
+		Package.type = FileTypes[L""];
+	}
+	FILE *resource = fopen(FilePath.c_str(), "r+b");
 	if (resource == NULL)
 	{
 		MosyHtmlPackage p;
 		p.Exit = false;
-		p.Html = L"<HTML><TITLE>Not Found</TITLE>\r\n<BODY><h1 align='center'>404</h1><br/><h1 align='center'>file not found.</h1>\r\n</BODY></HTML>\r\n";
-		p.Length = p.Html.length();
+		const char* strCharA_ = "<HTML><TITLE>Not Found</TITLE>\r\n<BODY><h1 align='center'>404</h1><br/><h1 align='center'>file not found.</h1>\r\n</BODY></HTML>\r\n";
+		p.Html.insert(p.Html.end(), strCharA_, strCharA_ + strlen(strCharA_));
+		p.Length = p.Html.size();
 		p.type = L"text/html";
 		return p;
 	}
@@ -77,11 +72,14 @@ MosyHtmlPackage MosyHtmlSerializer::AddFile(std::string FilePath)
 	while (1)
 	{
 		memset(send_buf, 0, sizeof(send_buf));
-		fgets(send_buf, sizeof(send_buf), resource);
-		Package.Html += MosyString::String2WString(send_buf);
+		fread(send_buf, sizeof(char), BUF_LENGTH * 1000, resource);
+		//Package.Html += MosyString::String2WString(send_buf);
+		Package.Html.insert(Package.Html.end(), send_buf, send_buf + BUF_LENGTH * 1000);
 		if (feof(resource))
 			break;
 	}
+	//const wchar_t* ss = Package.Html.c_str();
+	fclose(resource);
 	return Package;
 }
 
@@ -147,9 +145,9 @@ MosyHtmlSerializer::MosyHtmlSerializer()
 	FileTypes.insert_or_assign(L"m3u", L"audio/mpegurl");
 	FileTypes.insert_or_assign(L"midi", L"audio/mid");
 	FileTypes.insert_or_assign(L"mid", L"audio/mid");
-	FileTypes.insert_or_assign(L"mp2", L"audio/mp2");
-	FileTypes.insert_or_assign(L"mp3", L"audio/mp3");
-	FileTypes.insert_or_assign(L"mp4", L"audio/mp4");
+	FileTypes.insert_or_assign(L"mp2", L"audio/mpeg");
+	FileTypes.insert_or_assign(L"mp3", L"audio/mpeg");
+	FileTypes.insert_or_assign(L"mp4", L"audio/mpeg");
 	FileTypes.insert_or_assign(L"mnd", L"audio/x-musicnet-download");
 	FileTypes.insert_or_assign(L"mp1", L"audio/mp1");
 	FileTypes.insert_or_assign(L"mns", L"audio/x-musicnet-stream");
@@ -255,7 +253,7 @@ MosyHtmlSerializer::MosyHtmlSerializer()
 	FileTypes.insert_or_assign(L"img", L"application/x-img");
 	FileTypes.insert_or_assign(L"isp", L"application/x-internet-signup");
 	FileTypes.insert_or_assign(L"jpe", L"application/x-jpe");
-	FileTypes.insert_or_assign(L"js", L"application/x-javascript");
+	FileTypes.insert_or_assign(L"js", L"text/js");
 	FileTypes.insert_or_assign(L"jpg", L"application/x-jpg");
 	FileTypes.insert_or_assign(L"lar", L"application/x-laplayer-reg");
 	FileTypes.insert_or_assign(L"latex", L"application/x-latex");
@@ -414,7 +412,7 @@ MosyHtmlSerializer::MosyHtmlSerializer()
 	FileTypes.insert_or_assign(L"m4e", L"video/mpeg4");
 	FileTypes.insert_or_assign(L"movie", L"video/x-sgi-movie");
 	FileTypes.insert_or_assign(L"mp2v", L"video/mpeg");
-	FileTypes.insert_or_assign(L"mp4", L"video/mpeg4");
+	FileTypes.insert_or_assign(L"mp4", L"audio/mpeg");
 	FileTypes.insert_or_assign(L"mpa", L"video/x-mpg");
 	FileTypes.insert_or_assign(L"mpe", L"video/x-mpeg");
 	FileTypes.insert_or_assign(L"mpg", L"video/mpg");
