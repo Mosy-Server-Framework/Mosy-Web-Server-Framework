@@ -1,7 +1,6 @@
 #pragma once
 #include "ModuleTemplates.h"
+#include "MosyModuleManager.h"
 
-extern "C"
-{
-	MosyRestfulResult TestRest(MosyControllerParams Params);
-}
+MosyRestfulResult TestRest(MosyEnvironment Environment, MosyControllerParams Params);
+MosyViewModule TestView(MosyEnvironment Environment, MosyControllerParams Params);

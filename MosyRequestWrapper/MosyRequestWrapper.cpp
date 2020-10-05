@@ -25,7 +25,7 @@ MosyRequestWrapperResult MosyRequestWrapper::GetRequestTarget(MosyValue RequestP
 				if (!lstrcmpiW(CPath, L"__NOT_FOUND__"))
 				{
 					Result.insert_or_assign(L"Type", MosyValue(L"ERROR"));
-					Result.insert_or_assign(L"Msg", MosyValue(L"Wrapper Error:Cannot Find File or Controller!"));
+					Result.insert_or_assign(L"Msg", MosyValue(L"Wrapper Error:Cannot Find File or Controller,Please Confirm whether the Wrapper Registry is Registered Correctly."));
 					return Result;
 				}
 				else
@@ -44,7 +44,7 @@ MosyRequestWrapperResult MosyRequestWrapper::GetRequestTarget(MosyValue RequestP
 			else
 			{
 				Result.insert_or_assign(L"Type", MosyValue(L"ERROR"));
-				Result.insert_or_assign(L"Msg", MosyValue(L"Wrapper Error:Cannot Find File or Controller!"));
+				Result.insert_or_assign(L"Msg", MosyValue(L"Wrapper Error:Cannot Find File or Controller,Please Confirm whether the Wrapper Registry is Registered Correctly."));
 				return Result;
 			}
 		}

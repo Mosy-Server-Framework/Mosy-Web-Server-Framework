@@ -26,21 +26,21 @@ MosyHtmlPackage MosyHtmlSerializer::AddFile(std::wstring FilePath)
 MosyHtmlPackage MosyHtmlSerializer::AddFile(std::string FilePath)
 {
 	MosyHtmlPackage Package;
-	/*wchar_t szExeFilePathFileName[MAX_PATH];
-	GetModuleFileNameW(NULL, szExeFilePathFileName, MAX_PATH);
-	std::wstring str = szExeFilePathFileName;
-	int idx = str.find_last_of('\\');
-	std::wstring sss = str.substr(0, idx);
 	if (FilePath[0] == '/' || FilePath[0] == '.' || FilePath[0] == '\\')
 	{
+		wchar_t szExeFilePathFileName[MAX_PATH];
+		GetModuleFileNameW(NULL, szExeFilePathFileName, MAX_PATH);
+		std::wstring str = szExeFilePathFileName;
+		int idx = str.find_last_of('\\');
+		std::wstring sss = str.substr(0, idx);
 		while (FilePath.find('/') != FilePath.npos)
 		{
 			int i = FilePath.find('/');
 			FilePath.replace(i, 1, "\\");
 		}
+		FilePath = MosyString::WString2String(sss) + FilePath;
+		FilePath = FilePath.substr(0, FilePath.find_last_not_of(L' ') + 1);
 	}
-	FilePath = MosyString::WString2String(sss) + FilePath;
-	FilePath = FilePath.substr(0, FilePath.find_last_not_of(L' ') + 1);*/
 	std::wstring tp = MosyString::String2WString(FilePath.substr(FilePath.find_last_of('.') + 1, FilePath.length()));
 	if (FileTypes.count(tp))
 	{

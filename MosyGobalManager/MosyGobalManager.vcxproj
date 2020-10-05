@@ -164,6 +164,7 @@
     <ClInclude Include="MosyThreadManager.h" />
     <ClInclude Include="MosyValue.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp" />
@@ -182,6 +183,9 @@
     <ProjectReference Include="..\MosyThreadManager\MosyThreadManager.vcxproj">
       <Project>{a219e6c6-39e2-4163-ba57-fb81e6e6139d}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Resource.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

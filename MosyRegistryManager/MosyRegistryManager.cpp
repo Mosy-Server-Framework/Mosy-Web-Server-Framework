@@ -15,9 +15,11 @@ void MosyRegistryManager::UpDate()
 	wstring ControllerRegistry = MosyProFileManager::GetMosyProfileString(MOSY_CORE_PROFILE_PATH, L"Register", L"ControllerRegistry", MOSY_DEFAULT_CONTROLLER_REGISTRY_PATH);
 	wstring ControllerInfo = MosyProFileManager::GetMosyProfileString(MOSY_CORE_PROFILE_PATH, L"Register", L"ControllerModulesRegistry", MOSY_DEFAULT_CONTROLLER_INFO_PATH);
 	wstring RequestWrapper = MosyProFileManager::GetMosyProfileString(MOSY_CORE_PROFILE_PATH, L"Register", L"RequestWrapper", MOSY_DEFAULT_REQUEST_WRAPPER_PATH);
+	wstring FunctionWrapper = MosyProFileManager::GetMosyProfileString(MOSY_CORE_PROFILE_PATH, L"Register", L"FunctionWrapper", MOSY_DEFAULT_FUNCTION_WRAPPER_PATH);
 	Registry.insert(MosyRegistryPair(L"ControllerRegistry", MosyValue(ControllerRegistry)));
 	Registry.insert(MosyRegistryPair(L"ControllerModulesRegistry", MosyValue(ControllerInfo)));
 	Registry.insert(MosyRegistryPair(L"RequestWrapper", MosyValue(RequestWrapper)));
+	Registry.insert(MosyRegistryPair(L"FunctionWrapper", MosyValue(FunctionWrapper)));
 	wstring ps[] = { L"ModuleIntegrityCheck",L"ModuleIntegrityCheckDelay",L"ModuleHashCheckWhenIntegrityCheck",L"ModuleBackup",L"ModuleBackupNode",L"ModuleBackupDelay",L"ModuleBackupOverwrite",L"ConfigBackup",L"ConfigBackupNode",L"ConfigBackupDelay",L"ConfigBackupOverwrite",L"ThreadResponseTimeout" };
 	for (int i = 0; i < 12; i++)
 	{

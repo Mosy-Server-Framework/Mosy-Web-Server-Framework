@@ -7,9 +7,11 @@
 #include <vector>
 using namespace std;
 
-typedef MosyValue(*RestfulControllerTamplate)(map<wstring, MosyValue>);
-typedef map<wstring, vector<MosyValue>>(*DataBaseInterface)(MosyValue QueryString);
+typedef map<wstring, MosyValue> MosyViewModule;
+typedef map<wstring, void*> MosyEnvironment;
+typedef map<wstring, MosyValue> MosyControllerParams;
+typedef MosyValue(*RestfulControllerTemplate)(map<wstring, void*>, map<wstring, MosyValue>);
+typedef MosyViewModule(*ViewControllerTemplate)(map<wstring, void*>, map<wstring, MosyValue>);
+typedef map<wstring, vector<MosyValue>>(*DataBaseInterface)(MosyValue);
 typedef MosyValue MosyModuleInstance;
 typedef MosyValue MosyRestfulResult;
-typedef map<wstring, MosyValue> MosyControllerParams;
-typedef map<wstring, vector<MosyValue>> DataBaseInterfaceResult;

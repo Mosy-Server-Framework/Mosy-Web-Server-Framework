@@ -173,6 +173,7 @@
     <ClInclude Include="MosyString.h" />
     <ClInclude Include="MosyValue.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MosyBaseTypes\MosyBaseTypes.vcxproj">
@@ -193,6 +194,9 @@
     <ProjectReference Include="..\Win32SocketLib\Win32SocketLib.vcxproj">
       <Project>{c6549537-33e7-47de-96a3-00a4b353e19d}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Resource.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,3 +1,4 @@
 LIBRARY TestLibrary
 EXPORTS
 TestRest @1
+TestView @2

@@ -19,13 +19,9 @@
 #include <string.h>
 using namespace std;
 
-DWORD _stdcall SubThread(LPVOID Param);
-DWORD _stdcall SenderThread(LPVOID Param);
-
 DWORD _stdcall InitThread(LPVOID Param)
 {
 	MosySocket Socket;
-	//MosyLogger::Log(MosyValue(L"Mosy InitThread Ready"));
 	try
 	{
 		Socket = (((CoreStruct*)Param)->MessageQueue->GetRequestSocket());
@@ -41,18 +37,39 @@ DWORD _stdcall InitThread(LPVOID Param)
 		MosyRequestPackage RequestPack = RequestQueuePackage.Package;
 		try
 		{
-			//MosyLogger::Log(MosyValue(L"Mosy Sub-Thread Ready"));
 			MosyModuleManager* ModuleManager = ((CoreStruct*)Param)->ModuleManager;
 			MosyResponseQueuePackage qp;
 			MosyResponsePackage Response;
 			MosyRequestWrapperResult Result = MosyRequestWrapper::GetRequestTarget(RequestPack.TargetInterface, RequestPack.Method);
 			if (Result[L"Type"].GetString() == L"RestController")
 			{
-				RestfulControllerTamplate TestController = ModuleManager->LoadRestfulController(Result[L"Path"]);
-				MosyValue v = (*TestController)(RequestPackage.Params);
+				MosyEnvironment Environment;
+				Environment.insert_or_assign(L"ModuleManager", ModuleManager);
+				MosyValue v = ModuleManager->ExecuteRestfulController(Result[L"Path"], Environment, RequestPack.Params);
 				MosyDataPackage DataPack;
 				DataPack.Data = v.GetString();
 				Response = MosyResponseSerializer::Serialize(MOSY_200, DataPack);
+			}
+			else if (Result[L"Type"].GetString() == L"ViewController")
+			{
+				MosyEnvironment Environment;
+				Environment.insert_or_assign(L"ModuleManager", ModuleManager);
+				MosyViewModule v = ModuleManager->ExecuteViewController(Result[L"Path"], Environment, RequestPack.Params);
+				wstring pth = v[L"View"].GetString();
+				while (pth.find(L"/") != pth.npos)
+				{
+					pth = pth.replace(pth.find(L"/"), 1, L"\\");
+				}
+				MosyHtmlSerializer HtmlSerializer;
+				MosyHtmlPackage HtmlPackage = HtmlSerializer.AddFile(pth);
+				if (HtmlPackage.Exit)
+				{
+					Response = MosyResponseSerializer::Serialize(MOSY_200, HtmlPackage);
+				}
+				else
+				{
+					Response = MosyResponseSerializer::Serialize(MOSY_404, HtmlPackage);
+				}
 			}
 			else if (Result[L"Type"].GetString() == L"Resource")
 			{
@@ -81,8 +98,6 @@ DWORD _stdcall InitThread(LPVOID Param)
 			}
 			qp.ClientSocket = RequestQueuePackage.ClientSocket;
 			qp.Package = Response;
-			//((CoreStruct*)Param)->MessageQueue->PushResponsePackage(qp);
-			//MosyLogger::Log(MosyValue(L"Mosy Sub-Thread Terminal"));
 			MosyResponseQueuePackage ResponseQueuePackage = qp;
 			MosySocket Socket;
 			try
@@ -120,6 +135,5 @@ DWORD _stdcall InitThread(LPVOID Param)
 	{
 		MosyLogger::Log(MosyValue(MosyString::String2WString(e.what())));
 	}
-	//MosyLogger::Log(MosyValue(L"Mosy InitThread Terminal"));
 	return 0;
 }

@@ -101,7 +101,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
       <ModuleDefinitionFile>Source.def</ModuleDefinitionFile>
-      <AdditionalDependencies>"E:\Devloper Files\Mosy Web Server Framework\x64\Release\MosyBaseTypes.lib";"E:\Devloper Files\Mosy Web Server Framework\x64\Release\MosyLogger.lib";%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>"E:\Devloper Files\Mosy Web Server Framework\x64\Release\MosyBaseTypes.lib";"E:\Devloper Files\Mosy Web Server Framework\x64\Release\MosyLogger.lib";"E:\Devloper Files\Mosy Web Server Framework\x64\Release\MosyModuleManager.lib";%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -136,7 +136,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableUAC>false</EnableUAC>
       <ModuleDefinitionFile>Source.def</ModuleDefinitionFile>
-      <AdditionalDependencies>"E:\Devloper Files\Mosy Web Server Framework\x64\Release\MosyBaseTypes.lib";"E:\Devloper Files\Mosy Web Server Framework\x64\Release\MosyLogger.lib";%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>"E:\Devloper Files\Mosy Web Server Framework\x64\Release\MosyBaseTypes.lib";"E:\Devloper Files\Mosy Web Server Framework\x64\Release\MosyLogger.lib";"E:\Devloper Files\Mosy Web Server Framework\x64\Release\MosyModuleManager.lib";%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">

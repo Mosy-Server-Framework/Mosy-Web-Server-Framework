@@ -163,6 +163,7 @@
     <ClInclude Include="MosyString.h" />
     <ClInclude Include="MosyValue.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp" />
@@ -184,6 +185,9 @@
     <ProjectReference Include="..\MosyRegistryManager\MosyRegistryManager.vcxproj">
       <Project>{e13c5fdf-be95-4af1-b492-9bf46461e766}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Resource.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -12,6 +12,7 @@ using namespace std;
 #define MOSY_DEFAULT_CONTROLLER_REGISTRY_PATH L".\\MosyConfig\\MosyControllerRegistry.ini"
 #define MOSY_DEFAULT_CONTROLLER_INFO_PATH L".\\MosyConfig\\MosyControllerModulesRegistry.ini"
 #define MOSY_DEFAULT_REQUEST_WRAPPER_PATH L".\\MosyConfig\\MosyRequestWrapper.ini"
+#define MOSY_DEFAULT_FUNCTION_WRAPPER_PATH L".\\MosyConfig\\MosyFunctionWrapper.ini"
 
 class MosyProFileManager
 {

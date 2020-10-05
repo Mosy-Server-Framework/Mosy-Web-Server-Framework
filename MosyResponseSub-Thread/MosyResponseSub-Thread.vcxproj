@@ -182,6 +182,7 @@
     <ClInclude Include="MosyThreadManager.h" />
     <ClInclude Include="MosyValue.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="Sub-Thread.h" />
     <ClInclude Include="ThreadStruct.h" />
   </ItemGroup>
@@ -231,6 +232,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Source.def" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Resource.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

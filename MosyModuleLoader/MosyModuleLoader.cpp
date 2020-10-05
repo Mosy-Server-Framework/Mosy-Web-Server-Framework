@@ -20,9 +20,9 @@ HINSTANCE MosyModuleLoader::LoadMosyModule(MosyValue Path)
 	return Library;
 }
 
-RestfulControllerTamplate MosyModuleLoader::GetRestfulController(MosyModuleInstance Instance, MosyValue ControllerName)
+RestfulControllerTemplate MosyModuleLoader::GetRestfulController(MosyModuleInstance Instance, MosyValue ControllerName)
 {
-	RestfulControllerTamplate Controller = (RestfulControllerTamplate)GetProcAddress((HINSTANCE)Instance.GetLLInteger(), MosyString::WString2String(ControllerName.GetString()).c_str());
+	RestfulControllerTemplate Controller = (RestfulControllerTemplate)GetProcAddress((HINSTANCE)Instance.GetLLInteger(), MosyString::WString2String(ControllerName.GetString()).c_str());
 	if (Controller == NULL)
 	{
 		throw MosyModuleLoaderException(MOSY_MODULE_LOADER_FAILED_TO_LOAD_RESTFUL_CONTROLLER);
@@ -31,15 +31,26 @@ RestfulControllerTamplate MosyModuleLoader::GetRestfulController(MosyModuleInsta
 	return Controller;
 }
 
-DataBaseInterface MosyModuleLoader::GetDataBaseInterface(MosyModuleInstance Instance, MosyValue DatabaseInterfaceName)
+ViewControllerTemplate MosyModuleLoader::GetViewController(MosyModuleInstance Instance, MosyValue ControllerName)
 {
-	DataBaseInterface DbInterface = (DataBaseInterface)GetProcAddress((HINSTANCE)Instance.GetLLInteger(), MosyString::WString2String(DatabaseInterfaceName.GetString()).c_str());
-	if (DbInterface == NULL)
+	ViewControllerTemplate Controller = (ViewControllerTemplate)GetProcAddress((HINSTANCE)Instance.GetLLInteger(), MosyString::WString2String(ControllerName.GetString()).c_str());
+	if (Controller == NULL)
+	{
+		throw MosyModuleLoaderException(MOSY_MODULE_LOADER_FAILED_TO_LOAD_VIEW_CONTROLLER);
+		return NULL;
+	}
+	return Controller;
+}
+
+MosyFunctionTemplate MosyModuleLoader::GetFunction(MosyModuleInstance Instance, MosyValue DatabaseInterfaceName)
+{
+	MosyFunctionTemplate Function = (MosyFunctionTemplate)GetProcAddress((HINSTANCE)Instance.GetLLInteger(), MosyString::WString2String(DatabaseInterfaceName.GetString()).c_str());
+	if (Function == NULL)
 	{
 		throw MosyModuleLoaderException(MOSY_MODULE_LOADER_FAILED_TO_LOAD_RESTFUL_CONTROLLER);
 		return NULL;
 	}
-	return DbInterface;
+	return Function;
 }
 
 void MosyModuleLoader::FreeMosyModule(HINSTANCE ModuleInstance)

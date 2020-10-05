@@ -3,7 +3,6 @@
 #include "MosyModuleLoader.h"
 #include "MosyString.h"
 #include "MosyValue.h"
-#include "MosyRegistryManager.h"
 #include <map>
 using namespace std;
 
@@ -15,13 +14,15 @@ class _declspec(dllimport) MosyModuleManager
 private:
 	MosyValue ControllerRegistry;
 	MosyValue ControllerModulesRegistry;
-	map<MosyValue, MosyValue> ModuleList;
-	map<MosyValue, MosyValue> ControllerWrapper;
+	MosyValue FunctionRegistry;
+	map<wstring, HINSTANCE> ModuleList;
+	map<wstring, MosyValue> ControllerWrapper;
 	MosyModuleLoader Loader;
 	void LoadControllerRegistry();
-	MosyModuleInstance GetMosyModule(MosyValue ModuleName);
+	HINSTANCE GetMosyModule(MosyValue ModuleName);
 	void UnLoadMosyModuel(MosyValue ModuleName);
 	MosyValue GetAtModule(MosyValue Name);
+	MosyValue GetFunctionAtModule(MosyValue Name);
 public:
 	enum MosyModuleErrorCode
 	{
@@ -61,7 +62,11 @@ public:
 		}
 	};
 	MosyModuleManager();
-	RestfulControllerTamplate LoadRestfulController(MosyValue ControllerName);
-	DataBaseInterface LoadDataBaseInterface(MosyValue InterfaceName);
+	RestfulControllerTemplate LoadRestfulController(MosyValue ControllerName);
+	ViewControllerTemplate LoadViewController(MosyValue ControllerName);
+	MosyFunctionTemplate LoadFunction(MosyValue FunctionName);
+	MosyValue ExecuteRestfulController(MosyValue ControllerName, MosyEnvironment Environment, MosyControllerParams Params);
+	MosyViewModule ExecuteViewController(MosyValue ControllerName, MosyEnvironment Environment, MosyControllerParams Params);
+	MosyFunctionResult ExecuteFunction(MosyValue ControllerName, MosyEnvironment Environment, MosyControllerParams Params);
 };
 
