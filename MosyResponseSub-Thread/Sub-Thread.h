@@ -89,7 +89,7 @@ DWORD _stdcall InitThread(LPVOID Param)
 			{
 				MosyHtmlPackage HtmlPackage;
 				HtmlPackage.Exit = false;
-				const char* strCharA_ = "<HTML><TITLE>Not Found</TITLE>\r\n<BODY><h1 align='center'>404</h1><br/><h1 align='center'>file not found.</h1>\r\n</BODY></HTML>\r\n";
+				const char* strCharA_ = "<HTML><TITLE>Not Found</TITLE>\r\n<BODY><h1 align='center'>404</h1><br/><h1 align='center'>NOT FOUND.</h1>\r\n</BODY></HTML>\r\n";
 				HtmlPackage.Html.insert(HtmlPackage.Html.end(), strCharA_, strCharA_ + strlen(strCharA_));
 				HtmlPackage.Length = HtmlPackage.Html.size();
 				HtmlPackage.type = L"text/html";
@@ -103,7 +103,7 @@ DWORD _stdcall InitThread(LPVOID Param)
 			try
 			{
 				Socket = ResponseQueuePackage.ClientSocket;
-				if (ResponseQueuePackage.Package.Body.size() != 0)
+				if (ResponseQueuePackage.Package.Size != 0)
 				{
 					Socket.Send(ResponseQueuePackage.Package.Head);
 					Socket.Send(ResponseQueuePackage.Package.Body, ResponseQueuePackage.Package.Size);

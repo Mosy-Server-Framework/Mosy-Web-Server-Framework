@@ -11,7 +11,7 @@ wstring MosyLogger::GenHead()
 	time_t nowtime;
 	tm* p = NULL;
 	time(&nowtime);
-	p = gmtime(&nowtime);
+	p = localtime(&nowtime);
 	wstring days[] = { L"Sun.",L"Mon.",L"Tues.",L"Wed.",L"Thur.",L"Fri.",L"Sat." };
 	wstring mons[] = { L"Jan.",L"Feb.",L"Mar.",L"Apr.",L"May.",L"June.",L"July.",L"Aug.",L"Sept.",L"Oct.",L"Nov.",L"Dec." };
 	wchar_t str[MAX_PATH];

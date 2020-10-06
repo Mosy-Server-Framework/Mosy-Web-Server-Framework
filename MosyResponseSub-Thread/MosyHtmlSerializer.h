@@ -6,7 +6,7 @@
 #define BUF_LENGTH 1024
 using namespace std;
 
-class _declspec(dllexport) MosyHtmlSerializer
+class _declspec(dllimport) MosyHtmlSerializer
 {
 protected:
 	map<wstring, wstring> FileTypes;

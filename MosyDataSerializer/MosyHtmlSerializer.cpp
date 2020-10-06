@@ -51,12 +51,12 @@ MosyHtmlPackage MosyHtmlSerializer::AddFile(std::string FilePath)
 		tp = L"";
 		Package.type = FileTypes[L""];
 	}
-	FILE *resource = fopen(FilePath.c_str(), "r+b");
+	FILE *resource = fopen(FilePath.c_str(), "rb");
 	if (resource == NULL)
 	{
 		MosyHtmlPackage p;
 		p.Exit = false;
-		const char* strCharA_ = "<HTML><TITLE>Not Found</TITLE>\r\n<BODY><h1 align='center'>404</h1><br/><h1 align='center'>file not found.</h1>\r\n</BODY></HTML>\r\n";
+		const char* strCharA_ = "<HTML><TITLE>Not Found</TITLE>\r\n<BODY><h1 align='center'>404</h1><br/><h1 align='center'>NOT FOUND.</h1>\r\n</BODY></HTML>\r\n";
 		p.Html.insert(p.Html.end(), strCharA_, strCharA_ + strlen(strCharA_));
 		p.Length = p.Html.size();
 		p.type = L"text/html";
