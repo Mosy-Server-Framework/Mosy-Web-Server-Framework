@@ -56,7 +56,6 @@ MosyHtmlPackage MosyHtmlSerializer::AddFile(std::string FilePath)
 	{
 		MosyHtmlPackage p;
 		p.Exit = false;
-		//UpDate Here
 		const char* strCharA_ = "<HTML><TITLE>Not Found</TITLE>\r\n<BODY><h1 align='center'>404</h1><br/><h1 align='center'>NOT FOUND.</h1>\r\n</BODY></HTML>\r\n";
 		p.Html.insert(p.Html.end(), strCharA_, strCharA_ + strlen(strCharA_));
 		p.Length = p.Html.size();

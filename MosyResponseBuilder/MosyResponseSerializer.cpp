@@ -505,8 +505,7 @@ MosyResponsePackage MosyResponseSerializer::Serialize(ResponseStatus Status, Mos
 	default:
 		break;
 	}
-	//Update Here,Mosy:Have You Forgot This Change,Moss?
-	//Update Here,Moss:Well...Thanks,Mosy.
+	//Response.Body = DataPackage.Html;
 	Response.Body.insert(Response.Body.begin(), DataPackage.Html.data(), DataPackage.Html.data() + DataPackage.Length);
 	Response.Size = DataPackage.Length;
 	return Response;

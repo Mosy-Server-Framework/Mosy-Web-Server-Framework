@@ -65,7 +65,6 @@ public:
 		}
 	};
 	HINSTANCE LoadMosyModule(MosyValue Path);
-	//Update Here,Mosy:Added View Controller Loader&Function Loader,Removed Database Interface
 	ViewControllerTemplate GetViewController(MosyModuleInstance Instance, MosyValue ControllerName);
 	RestfulControllerTemplate GetRestfulController(MosyModuleInstance Instance, MosyValue ControllerName);
 	MosyFunctionTemplate GetFunction(MosyModuleInstance Instance, MosyValue DatabaseInterfaceName);
