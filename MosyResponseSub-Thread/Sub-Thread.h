@@ -52,6 +52,7 @@ DWORD _stdcall InitThread(LPVOID Param)
 			}
 			else if (Result[L"Type"].GetString() == L"ViewController")
 			{
+				//Update Here,Mosy:Fixed Some Probably Bugs
 				MosyEnvironment Environment;
 				Environment.insert_or_assign(L"ModuleManager", ModuleManager);
 				MosyViewModule v = ModuleManager->ExecuteViewController(Result[L"Path"], Environment, RequestPack.Params);
